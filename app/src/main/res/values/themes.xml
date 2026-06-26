@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyDiary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/pink_primary</item>
+        <item name="colorPrimaryVariant">@color/pink_light</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/pink_primary</item>
+        <item name="colorSecondaryVariant">@color/pink_light</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+    </style>
+
+    <style name="Theme.MyDiary.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/pink_bg</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.MyDiary</item>
+    </style>
+
+    <style name="Widget.MyDiary.Button.Pink" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/pink_primary</item>
+        <item name="cornerRadius">40dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+
+    <style name="Widget.MyDiary.CheckboxOption" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="buttonTint">@color/pink_primary</item>
+    </style>
+
+    <style name="Widget.MyDiary.RadioOption" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="buttonTint">@color/pink_primary</item>
+    </style>
+
+    <style name="PinKeyStyle">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/pink_primary</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_pin_key</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+</resources>

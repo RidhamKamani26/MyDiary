@@ -1,0 +1,118 @@
+[
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_security_question.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_security_question.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\page_onboarding_privacy.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_privacy.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\item_background.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_set_password.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_set_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\item_mood.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_mood.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_splash_cover.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_splash_cover.xml"
+    },
+    {
+        "merged": "com.mydiary.app-mergeDebugResources-59:/layout/activity_splash.xml",
+        "source": "com.mydiary.app-main-62:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\page_onboarding_storage.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_storage.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_splash.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\page_onboarding_frequency.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_frequency.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_onboarding.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_onboarding.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\item_theme.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_theme.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_vault.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_vault.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\item_vault_media.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_vault_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_vault_media.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_vault_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\item_vault_image.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_vault_image.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_settings.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_note_detail.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_note_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\page_onboarding_gender.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_gender.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_calendar.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_calendar.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\item_note.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_note.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_password_settings.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_password_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\page_onboarding_welcome.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_welcome.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_forgot_password.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_forgot_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_vault_settings.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_vault_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_add_note.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_add_note.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\page_onboarding_reasons.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_reasons.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_themes.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_themes.xml"
+    }
+]
