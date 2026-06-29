@@ -20,16 +20,16 @@ public final class ItemBackgroundBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final ImageView ivSelected;
+  public final ImageView ivBgPreview;
 
   @NonNull
-  public final View vColorPreview;
+  public final ImageView ivSelected;
 
-  private ItemBackgroundBinding(@NonNull FrameLayout rootView, @NonNull ImageView ivSelected,
-      @NonNull View vColorPreview) {
+  private ItemBackgroundBinding(@NonNull FrameLayout rootView, @NonNull ImageView ivBgPreview,
+      @NonNull ImageView ivSelected) {
     this.rootView = rootView;
+    this.ivBgPreview = ivBgPreview;
     this.ivSelected = ivSelected;
-    this.vColorPreview = vColorPreview;
   }
 
   @Override
@@ -59,19 +59,19 @@ public final class ItemBackgroundBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.ivBgPreview;
+      ImageView ivBgPreview = ViewBindings.findChildViewById(rootView, id);
+      if (ivBgPreview == null) {
+        break missingId;
+      }
+
       id = R.id.ivSelected;
       ImageView ivSelected = ViewBindings.findChildViewById(rootView, id);
       if (ivSelected == null) {
         break missingId;
       }
 
-      id = R.id.vColorPreview;
-      View vColorPreview = ViewBindings.findChildViewById(rootView, id);
-      if (vColorPreview == null) {
-        break missingId;
-      }
-
-      return new ItemBackgroundBinding((FrameLayout) rootView, ivSelected, vColorPreview);
+      return new ItemBackgroundBinding((FrameLayout) rootView, ivBgPreview, ivSelected);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

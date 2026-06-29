@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,140 +10,172 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Toolbar -->
+        <!-- ── Toolbar ── -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="8dp"
             android:background="@color/white"
-            android:elevation="2dp">
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp">
 
             <ImageView
                 android:id="@+id/ibClose"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="8dp"
-                android:src="@drawable/ic_close"
-                android:background="?attr/selectableItemBackgroundBorderless" />
+                android:src="@drawable/ic_close" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/add_notes"
-                android:textSize="17sp"
+                android:gravity="center"
+                android:text="Add Notes"
                 android:textColor="@color/text_primary"
-                android:fontFamily="@font/poppins_semibold"
-                android:gravity="center" />
+                android:textSize="17sp" />
 
             <ImageView
                 android:id="@+id/ibSave"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="8dp"
-                android:src="@drawable/ic_check"
-                android:background="?attr/selectableItemBackgroundBorderless" />
+                android:src="@drawable/ic_check" />
 
         </LinearLayout>
 
-        <!-- Note content area -->
-        <ScrollView
-            android:id="@+id/noteContainer"
+        <!-- ── Content area: background image sits behind the ScrollView ── -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fillViewport="true"
-            android:paddingBottom="8dp">
+            android:layout_weight="1">
 
-            <LinearLayout
+            <!-- Background image layer (shown for abstract/line/plant) -->
+            <ImageView
+                android:id="@+id/ivNoteBg"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingTop="12dp">
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
 
-                <!-- Date row -->
-                <TextView
-                    android:id="@+id/tvDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:textColor="@color/pink_primary"
-                    android:fontFamily="@font/poppins_medium"
-                    android:drawableEnd="@drawable/ic_dropdown_arrow"
-                    android:drawablePadding="4dp"
-                    android:gravity="center_vertical" />
+            <!-- Scrollable note content (background color set here for solid colors) -->
+            <ScrollView
+                android:id="@+id/noteContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:fillViewport="true">
 
-                <!-- Title -->
-                <EditText
-                    android:id="@+id/etTitle"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="@string/title_hint"
-                    android:textSize="20sp"
-                    android:textColor="@color/text_primary"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textColorHint="@color/text_hint"
-                    android:background="@android:color/transparent"
-                    android:inputType="textCapSentences"
-                    android:maxLines="2" />
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="16dp">
 
-                <!-- Description -->
-                <EditText
-                    android:id="@+id/etDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:hint="@string/description_hint"
-                    android:textSize="15sp"
-                    android:textColor="@color/text_primary"
-                    android:textColorHint="@color/text_hint"
-                    android:background="@android:color/transparent"
-                    android:inputType="textCapSentences|textMultiLine"
-                    android:gravity="top"
-                    android:minHeight="200dp" />
+                    <!-- Date row (tapping opens DatePickerDialog) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                <!-- Attached Image -->
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:drawableEnd="@drawable/ic_dropdown_arrow"
+                            android:drawablePadding="4dp"
+                            android:gravity="center_vertical"
+                            android:paddingVertical="8dp"
+                            android:textColor="@color/pink_primary"
+                            android:textSize="13sp" />
 
-                    <ImageView
-                        android:id="@+id/ivNoteImage"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:scaleType="centerCrop"
-                        android:visibility="gone"
-                        android:background="@drawable/bg_note_image" />
+                        <TextView
+                            android:id="@+id/tvMoodIndicator"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:visibility="gone" />
 
-                    <ImageView
-                        android:id="@+id/ibDeleteImage"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="bottom|end"
-                        android:src="@drawable/ic_delete"
-                        android:background="@color/pink_primary"
-                        android:padding="4dp"
-                        android:visibility="gone" />
+                    </LinearLayout>
 
-                </FrameLayout>
+                    <!-- Title -->
+                    <EditText
+                        android:id="@+id/etTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Title"
+                        android:inputType="textCapSentences"
+                        android:maxLines="2"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="20sp" />
 
-            </LinearLayout>
+                    <!-- Description -->
+                    <EditText
+                        android:id="@+id/etDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/transparent"
+                        android:gravity="top"
+                        android:hint="Description"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:minHeight="200dp"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="15sp" />
 
-        </ScrollView>
+                    <!-- Attached photo (user's diary image, NOT background) -->
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
 
-        <!-- Mood Picker Panel -->
+                        <ImageView
+                            android:id="@+id/ivNoteImage"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:background="@drawable/bg_note_image"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/ibDeleteImage"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="top|end"
+                            android:background="@color/pink_primary"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_close"
+                            android:visibility="gone" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </FrameLayout>
+
+        <!-- ── Mood Picker Panel ── -->
         <LinearLayout
             android:id="@+id/layoutMood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@color/white"
-            android:elevation="8dp"
+            android:elevation="12dp"
+            android:orientation="vertical"
             android:visibility="gone">
 
             <View
@@ -156,29 +187,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/how_are_you"
-                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:text="How are you?"
                 android:textColor="@color/text_primary"
-                android:fontFamily="@font/poppins_semibold" />
+                android:textSize="14sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMoods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="12dp"
+                android:clipToPadding="false"
+                android:paddingHorizontal="8dp"
                 android:paddingVertical="8dp" />
 
         </LinearLayout>
 
-        <!-- Background Picker Panel -->
+        <!-- ── Background Picker Panel ── -->
         <LinearLayout
             android:id="@+id/layoutBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@color/white"
-            android:elevation="8dp"
+            android:elevation="12dp"
+            android:orientation="vertical"
             android:visibility="gone">
 
             <View
@@ -186,92 +217,92 @@
                 android:layout_height="1dp"
                 android:background="@color/divider_color" />
 
-            <!-- Background header with collapse arrow and check -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:orientation="horizontal"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="16dp">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_dropdown_arrow"
-                    android:background="?attr/selectableItemBackgroundBorderless" />
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_dropdown_arrow" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/background_label"
-                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:text="Background"
                     android:textColor="@color/text_primary"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:gravity="center" />
+                    android:textSize="15sp" />
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_check"
-                    android:background="?attr/selectableItemBackgroundBorderless" />
+                    android:id="@+id/ibBgConfirm"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_check" />
 
             </LinearLayout>
 
-            <!-- Tab row: Color | Abstract | Line | Plant -->
+            <!-- Tabs -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingHorizontal="16dp"
-                android:gravity="center_vertical">
+                android:paddingHorizontal="16dp">
 
                 <TextView
                     android:id="@+id/tabColor"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
+                    android:background="@drawable/bg_tab_selected"
+                    android:gravity="center"
                     android:paddingHorizontal="16dp"
                     android:text="Color"
-                    android:textSize="13sp"
-                    android:gravity="center"
-                    android:background="@drawable/bg_tab_selected"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tabAbstract"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:gravity="center"
                     android:paddingHorizontal="16dp"
                     android:text="Abstract"
-                    android:textSize="13sp"
-                    android:gravity="center"
-                    android:background="@drawable/bg_tab_unselected"
-                    android:textColor="@color/text_secondary" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tabLine"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:gravity="center"
                     android:paddingHorizontal="16dp"
                     android:text="Line"
-                    android:textSize="13sp"
-                    android:gravity="center"
-                    android:background="@drawable/bg_tab_unselected"
-                    android:textColor="@color/text_secondary" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tabPlant"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:gravity="center"
                     android:paddingHorizontal="16dp"
                     android:text="Plant"
-                    android:textSize="13sp"
-                    android:gravity="center"
-                    android:background="@drawable/bg_tab_unselected"
-                    android:textColor="@color/text_secondary" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -279,69 +310,65 @@
                 android:id="@+id/rvBackgrounds"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
+                android:clipToPadding="false"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="8dp" />
 
         </LinearLayout>
 
-        <!-- Bottom toolbar icons -->
+        <!-- ── Bottom toolbar ── -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingHorizontal="16dp"
             android:background="@color/white"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
 
             <ImageView
                 android:id="@+id/ibMood"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_emoji"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:tint="@color/pink_primary" />
+                android:padding="8dp"
+                android:src="@drawable/ic_emoji" />
 
             <ImageView
                 android:id="@+id/ibImage"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_image"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:tint="@color/pink_primary" />
+                android:padding="8dp"
+                android:src="@drawable/ic_image" />
 
             <ImageView
                 android:id="@+id/ibText"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_text_format"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:tint="@color/pink_primary" />
+                android:padding="8dp"
+                android:src="@drawable/ic_text_format" />
 
             <ImageView
                 android:id="@+id/ibSticker"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_star"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:tint="@color/pink_primary" />
+                android:padding="8dp"
+                android:src="@drawable/ic_star" />
 
             <ImageView
                 android:id="@+id/ibBackground"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_layers"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:tint="@color/pink_primary" />
+                android:padding="8dp"
+                android:src="@drawable/ic_layers" />
 
         </LinearLayout>
 

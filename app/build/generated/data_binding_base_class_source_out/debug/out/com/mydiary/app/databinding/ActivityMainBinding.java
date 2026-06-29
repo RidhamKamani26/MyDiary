@@ -30,7 +30,7 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FloatingActionButton fabAddNote;
 
   @NonNull
-  public final FloatingActionButton fabAvatar;
+  public final ImageView fabAvatar;
 
   @NonNull
   public final ImageView ivHeaderBanner;
@@ -57,7 +57,7 @@ public final class ActivityMainBinding implements ViewBinding {
   public final SearchView searchView;
 
   private ActivityMainBinding(@NonNull CoordinatorLayout rootView, @NonNull LinearLayout bottomNav,
-      @NonNull FloatingActionButton fabAddNote, @NonNull FloatingActionButton fabAvatar,
+      @NonNull FloatingActionButton fabAddNote, @NonNull ImageView fabAvatar,
       @NonNull ImageView ivHeaderBanner, @NonNull LinearLayout layoutEmpty,
       @NonNull LinearLayout navCalendar, @NonNull LinearLayout navImages,
       @NonNull LinearLayout navPrivate, @NonNull LinearLayout navSettings,
@@ -116,7 +116,7 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       id = R.id.fabAvatar;
-      FloatingActionButton fabAvatar = ViewBindings.findChildViewById(rootView, id);
+      ImageView fabAvatar = ViewBindings.findChildViewById(rootView, id);
       if (fabAvatar == null) {
         break missingId;
       }

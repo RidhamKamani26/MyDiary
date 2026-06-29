@@ -24,10 +24,6 @@
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_splash_cover.xml"
     },
     {
-        "merged": "com.mydiary.app-mergeDebugResources-59:/layout/activity_splash.xml",
-        "source": "com.mydiary.app-main-62:/layout/activity_splash.xml"
-    },
-    {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\page_onboarding_storage.xml",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_storage.xml"
     },
@@ -70,6 +66,10 @@
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_settings.xml",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_settings.xml"
+    },
+    {
+        "merged": "com.mydiary.app-mergeDebugResources-59:/layout/activity_add_note.xml",
+        "source": "com.mydiary.app-main-62:/layout/activity_add_note.xml"
     },
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_note_detail.xml",

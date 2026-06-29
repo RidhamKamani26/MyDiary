@@ -47,16 +47,14 @@
                 android:background="@android:color/transparent" />
 
             <!-- Mushroom/avatar FAB -->
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
+            <ImageView
                 android:id="@+id/fabAvatar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="12dp"
                 android:src="@drawable/ic_mushroom"
-                app:backgroundTint="@color/pink_primary"
-                app:fabSize="mini"
-                app:elevation="4dp" />
+                app:fabSize="mini" />
 
         </FrameLayout>
 

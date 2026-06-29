@@ -34,6 +34,9 @@ public final class ActivityAddNoteBinding implements ViewBinding {
   public final ImageView ibBackground;
 
   @NonNull
+  public final ImageView ibBgConfirm;
+
+  @NonNull
   public final ImageView ibClose;
 
   @NonNull
@@ -53,6 +56,9 @@ public final class ActivityAddNoteBinding implements ViewBinding {
 
   @NonNull
   public final ImageView ibText;
+
+  @NonNull
+  public final ImageView ivNoteBg;
 
   @NonNull
   public final ImageView ivNoteImage;
@@ -87,19 +93,24 @@ public final class ActivityAddNoteBinding implements ViewBinding {
   @NonNull
   public final TextView tvDate;
 
+  @NonNull
+  public final TextView tvMoodIndicator;
+
   private ActivityAddNoteBinding(@NonNull CoordinatorLayout rootView,
       @NonNull EditText etDescription, @NonNull EditText etTitle, @NonNull ImageView ibBackground,
-      @NonNull ImageView ibClose, @NonNull ImageView ibDeleteImage, @NonNull ImageView ibImage,
-      @NonNull ImageView ibMood, @NonNull ImageView ibSave, @NonNull ImageView ibSticker,
-      @NonNull ImageView ibText, @NonNull ImageView ivNoteImage,
-      @NonNull LinearLayout layoutBackground, @NonNull LinearLayout layoutMood,
-      @NonNull ScrollView noteContainer, @NonNull RecyclerView rvBackgrounds,
-      @NonNull RecyclerView rvMoods, @NonNull TextView tabAbstract, @NonNull TextView tabColor,
-      @NonNull TextView tabLine, @NonNull TextView tabPlant, @NonNull TextView tvDate) {
+      @NonNull ImageView ibBgConfirm, @NonNull ImageView ibClose, @NonNull ImageView ibDeleteImage,
+      @NonNull ImageView ibImage, @NonNull ImageView ibMood, @NonNull ImageView ibSave,
+      @NonNull ImageView ibSticker, @NonNull ImageView ibText, @NonNull ImageView ivNoteBg,
+      @NonNull ImageView ivNoteImage, @NonNull LinearLayout layoutBackground,
+      @NonNull LinearLayout layoutMood, @NonNull ScrollView noteContainer,
+      @NonNull RecyclerView rvBackgrounds, @NonNull RecyclerView rvMoods,
+      @NonNull TextView tabAbstract, @NonNull TextView tabColor, @NonNull TextView tabLine,
+      @NonNull TextView tabPlant, @NonNull TextView tvDate, @NonNull TextView tvMoodIndicator) {
     this.rootView = rootView;
     this.etDescription = etDescription;
     this.etTitle = etTitle;
     this.ibBackground = ibBackground;
+    this.ibBgConfirm = ibBgConfirm;
     this.ibClose = ibClose;
     this.ibDeleteImage = ibDeleteImage;
     this.ibImage = ibImage;
@@ -107,6 +118,7 @@ public final class ActivityAddNoteBinding implements ViewBinding {
     this.ibSave = ibSave;
     this.ibSticker = ibSticker;
     this.ibText = ibText;
+    this.ivNoteBg = ivNoteBg;
     this.ivNoteImage = ivNoteImage;
     this.layoutBackground = layoutBackground;
     this.layoutMood = layoutMood;
@@ -118,6 +130,7 @@ public final class ActivityAddNoteBinding implements ViewBinding {
     this.tabLine = tabLine;
     this.tabPlant = tabPlant;
     this.tvDate = tvDate;
+    this.tvMoodIndicator = tvMoodIndicator;
   }
 
   @Override
@@ -165,6 +178,12 @@ public final class ActivityAddNoteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.ibBgConfirm;
+      ImageView ibBgConfirm = ViewBindings.findChildViewById(rootView, id);
+      if (ibBgConfirm == null) {
+        break missingId;
+      }
+
       id = R.id.ibClose;
       ImageView ibClose = ViewBindings.findChildViewById(rootView, id);
       if (ibClose == null) {
@@ -204,6 +223,12 @@ public final class ActivityAddNoteBinding implements ViewBinding {
       id = R.id.ibText;
       ImageView ibText = ViewBindings.findChildViewById(rootView, id);
       if (ibText == null) {
+        break missingId;
+      }
+
+      id = R.id.ivNoteBg;
+      ImageView ivNoteBg = ViewBindings.findChildViewById(rootView, id);
+      if (ivNoteBg == null) {
         break missingId;
       }
 
@@ -273,10 +298,16 @@ public final class ActivityAddNoteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvMoodIndicator;
+      TextView tvMoodIndicator = ViewBindings.findChildViewById(rootView, id);
+      if (tvMoodIndicator == null) {
+        break missingId;
+      }
+
       return new ActivityAddNoteBinding((CoordinatorLayout) rootView, etDescription, etTitle,
-          ibBackground, ibClose, ibDeleteImage, ibImage, ibMood, ibSave, ibSticker, ibText,
-          ivNoteImage, layoutBackground, layoutMood, noteContainer, rvBackgrounds, rvMoods,
-          tabAbstract, tabColor, tabLine, tabPlant, tvDate);
+          ibBackground, ibBgConfirm, ibClose, ibDeleteImage, ibImage, ibMood, ibSave, ibSticker,
+          ibText, ivNoteBg, ivNoteImage, layoutBackground, layoutMood, noteContainer, rvBackgrounds,
+          rvMoods, tabAbstract, tabColor, tabLine, tabPlant, tvDate, tvMoodIndicator);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -12,8 +12,8 @@ data class DiaryNote(
     val description: String = "",
     val imagePath: String? = null,
     val moodEmoji: String? = null,
-    val backgroundType: String = "color",  // color, abstract, line, plant
-    val backgroundValue: String = "#FFFFFF",
+    val backgroundType: String = "color",    // "color" | "abstract" | "line" | "plant"
+    val backgroundValue: String = "#FFFFFF", // hex color OR drawable name e.g. "abstract_2"
     val date: Date = Date(),
     val isPrivate: Boolean = false,
     val createdAt: Long = System.currentTimeMillis()
