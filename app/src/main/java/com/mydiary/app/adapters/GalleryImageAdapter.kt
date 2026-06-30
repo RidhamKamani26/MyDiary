@@ -10,21 +10,20 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mydiary.app.R
-import com.mydiary.app.models.VaultMedia
+import com.mydiary.app.models.DiaryNote
 
 /**
- * Grid adapter used by ActivityImage (standalone "Images" screen).
- * Purely for DISPLAY — tapping an item notifies the activity which
- * opens ImageViewerActivity with the full ordered list of image IDs.
+ * Grid adapter for ActivityImage.
+ * Shows the imagePath of every DiaryNote that has one attached.
  */
 class GalleryImageAdapter(
     private val onImageClick: (position: Int) -> Unit
-) : ListAdapter<VaultMedia, GalleryImageAdapter.GalleryViewHolder>(DIFF) {
+) : ListAdapter<DiaryNote, GalleryImageAdapter.GalleryViewHolder>(DIFF) {
 
     companion object {
-        val DIFF = object : DiffUtil.ItemCallback<VaultMedia>() {
-            override fun areItemsTheSame(a: VaultMedia, b: VaultMedia) = a.id == b.id
-            override fun areContentsTheSame(a: VaultMedia, b: VaultMedia) = a == b
+        val DIFF = object : DiffUtil.ItemCallback<DiaryNote>() {
+            override fun areItemsTheSame(a: DiaryNote, b: DiaryNote) = a.id == b.id
+            override fun areContentsTheSame(a: DiaryNote, b: DiaryNote) = a == b
         }
     }
 
@@ -41,8 +40,8 @@ class GalleryImageAdapter(
     inner class GalleryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val ivImage: ImageView = view.findViewById(R.id.ivGalleryImage)
 
-        fun bind(media: VaultMedia, position: Int) {
-            val path = media.vaultPath
+        fun bind(note: DiaryNote, position: Int) {
+            val path = note.imagePath ?: return
             Glide.with(itemView.context)
                 .load(
                     if (path.startsWith("content://") || path.startsWith("file://"))

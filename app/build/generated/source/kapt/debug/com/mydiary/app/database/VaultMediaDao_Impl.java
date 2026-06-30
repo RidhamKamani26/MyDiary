@@ -101,7 +101,7 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
   }
 
   @Override
-  public Object insertMedia(final VaultMedia media, final Continuation<? super Long> $completion) {
+  public Object insertMedia(final VaultMedia media, final Continuation<? super Long> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -115,11 +115,11 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteMedia(final VaultMedia media, final Continuation<? super Unit> $completion) {
+  public Object deleteMedia(final VaultMedia media, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -133,11 +133,11 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteMediaById(final long id, final Continuation<? super Unit> $completion) {
+  public Object deleteMediaById(final long id, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -158,7 +158,7 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           __preparedStmtOfDeleteMediaById.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
@@ -294,7 +294,7 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
   }
 
   @Override
-  public Object getMediaById(final long id, final Continuation<? super VaultMedia> $completion) {
+  public Object getMediaById(final long id, final Continuation<? super VaultMedia> arg1) {
     final String _sql = "SELECT * FROM vault_media WHERE id = ? LIMIT 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -352,7 +352,7 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @NonNull

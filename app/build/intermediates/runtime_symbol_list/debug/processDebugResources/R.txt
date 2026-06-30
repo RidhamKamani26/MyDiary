@@ -2222,6 +2222,7 @@ int color pink_bg 0x7f0602f9
 int color pink_card 0x7f0602fa
 int color pink_light 0x7f0602fb
 int color pink_primary 0x7f0602fc
+int color pink_primary_dark 0x7f06031d
 int color preference_fallback_accent_color 0x7f0602fd
 int color primary_dark_material_dark 0x7f0602fe
 int color primary_dark_material_light 0x7f0602ff
@@ -3267,6 +3268,7 @@ int drawable ic_mtrl_chip_checked_circle 0x7f0800db
 int drawable ic_mtrl_chip_close_circle 0x7f0800dc
 int drawable ic_mushroom 0x7f0800dd
 int drawable ic_palette 0x7f0800de
+int drawable ic_password 0x7f080147
 int drawable ic_policy 0x7f0800df
 int drawable ic_privacy_illustration 0x7f0800e0
 int drawable ic_question 0x7f0800e1

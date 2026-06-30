@@ -805,6 +805,104 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
     });
   }
 
+  @Override
+  public LiveData<List<DiaryNote>> getNotesWithImages() {
+    final String _sql = "SELECT * FROM diary_notes WHERE imagePath IS NOT NULL AND imagePath != '' AND isPrivate = 0 ORDER BY createdAt DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[] {"diary_notes"}, false, new Callable<List<DiaryNote>>() {
+      @Override
+      @Nullable
+      public List<DiaryNote> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
+          final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
+          final int _cursorIndexOfImagePath = CursorUtil.getColumnIndexOrThrow(_cursor, "imagePath");
+          final int _cursorIndexOfMoodEmoji = CursorUtil.getColumnIndexOrThrow(_cursor, "moodEmoji");
+          final int _cursorIndexOfBackgroundType = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundType");
+          final int _cursorIndexOfBackgroundValue = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundValue");
+          final int _cursorIndexOfFontFileName = CursorUtil.getColumnIndexOrThrow(_cursor, "fontFileName");
+          final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
+          final int _cursorIndexOfIsPrivate = CursorUtil.getColumnIndexOrThrow(_cursor, "isPrivate");
+          final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final List<DiaryNote> _result = new ArrayList<DiaryNote>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final DiaryNote _item;
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final String _tmpTitle;
+            if (_cursor.isNull(_cursorIndexOfTitle)) {
+              _tmpTitle = null;
+            } else {
+              _tmpTitle = _cursor.getString(_cursorIndexOfTitle);
+            }
+            final String _tmpDescription;
+            if (_cursor.isNull(_cursorIndexOfDescription)) {
+              _tmpDescription = null;
+            } else {
+              _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
+            }
+            final String _tmpImagePath;
+            if (_cursor.isNull(_cursorIndexOfImagePath)) {
+              _tmpImagePath = null;
+            } else {
+              _tmpImagePath = _cursor.getString(_cursorIndexOfImagePath);
+            }
+            final String _tmpMoodEmoji;
+            if (_cursor.isNull(_cursorIndexOfMoodEmoji)) {
+              _tmpMoodEmoji = null;
+            } else {
+              _tmpMoodEmoji = _cursor.getString(_cursorIndexOfMoodEmoji);
+            }
+            final String _tmpBackgroundType;
+            if (_cursor.isNull(_cursorIndexOfBackgroundType)) {
+              _tmpBackgroundType = null;
+            } else {
+              _tmpBackgroundType = _cursor.getString(_cursorIndexOfBackgroundType);
+            }
+            final String _tmpBackgroundValue;
+            if (_cursor.isNull(_cursorIndexOfBackgroundValue)) {
+              _tmpBackgroundValue = null;
+            } else {
+              _tmpBackgroundValue = _cursor.getString(_cursorIndexOfBackgroundValue);
+            }
+            final String _tmpFontFileName;
+            if (_cursor.isNull(_cursorIndexOfFontFileName)) {
+              _tmpFontFileName = null;
+            } else {
+              _tmpFontFileName = _cursor.getString(_cursorIndexOfFontFileName);
+            }
+            final Date _tmpDate;
+            final Long _tmp;
+            if (_cursor.isNull(_cursorIndexOfDate)) {
+              _tmp = null;
+            } else {
+              _tmp = _cursor.getLong(_cursorIndexOfDate);
+            }
+            _tmpDate = __converters.fromTimestamp(_tmp);
+            final boolean _tmpIsPrivate;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfIsPrivate);
+            _tmpIsPrivate = _tmp_1 != 0;
+            final long _tmpCreatedAt;
+            _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
+            _item = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpFontFileName,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
   @NonNull
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();

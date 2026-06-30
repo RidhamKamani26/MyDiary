@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mydiary.app.R
 import com.mydiary.app.adapters.GalleryImageAdapter
-import com.mydiary.app.models.VaultMedia
+import com.mydiary.app.models.DiaryNote
 import com.mydiary.app.viewmodels.DiaryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,16 +18,18 @@ import dagger.hilt.android.AndroidEntryPoint
  * ActivityImage — standalone "Images" screen, separate from the private Vault.
  *
  * Opened from MainActivity's bottom nav "Images" icon.
- * Shows ALL images stored in the database (VaultMedia where mediaType == "image").
- * Tapping any image opens ImageViewerActivity in a swipeable ViewPager2,
- * starting at the tapped image.
+ * Shows every image attached to a diary note (DiaryNote.imagePath),
+ * which is the SAME source AddNoteActivity saves to when the user
+ * picks a photo for their entry. This is why images now correctly
+ * appear here — previously this screen was reading from VaultMedia,
+ * a completely different table that only holds Vault-added media.
  */
 @AndroidEntryPoint
 class ActivityImage : AppCompatActivity() {
 
     private val viewModel: DiaryViewModel by viewModels()
     private lateinit var adapter: GalleryImageAdapter
-    private var currentImages: List<VaultMedia> = emptyList()
+    private var currentNotes: List<DiaryNote> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +42,7 @@ class ActivityImage : AppCompatActivity() {
     }
 
     private fun setupGrid() {
-        adapter = GalleryImageAdapter { position ->
-            openImageViewer(position)
-        }
+        adapter = GalleryImageAdapter { position -> openImageViewer(position) }
         findViewById<RecyclerView>(R.id.rvImages).apply {
             layoutManager = GridLayoutManager(this@ActivityImage, 3)
             adapter        = this@ActivityImage.adapter
@@ -50,13 +50,14 @@ class ActivityImage : AppCompatActivity() {
     }
 
     private fun observeImages() {
-        viewModel.getVaultImages().observe(this) { images ->
-            currentImages = images
-            adapter.submitList(images)
+        // ── FIX: pull from notesWithImages (DiaryNote table), not Vault ──
+        viewModel.notesWithImages.observe(this) { notes ->
+            currentNotes = notes
+            adapter.submitList(notes)
 
             val rv    = findViewById<RecyclerView>(R.id.rvImages)
             val empty = findViewById<View>(R.id.layoutEmpty)
-            if (images.isEmpty()) {
+            if (notes.isEmpty()) {
                 rv.visibility    = View.GONE
                 empty.visibility = View.VISIBLE
             } else {
@@ -66,11 +67,11 @@ class ActivityImage : AppCompatActivity() {
         }
     }
 
-    /** Opens ImageViewerActivity with the full ordered list, starting at [position]. */
+    /** Opens the generic ImageViewerActivity with all note image paths, starting at [position]. */
     private fun openImageViewer(position: Int) {
-        val ids = currentImages.map { it.id }.toLongArray()
+        val paths = ArrayList(currentNotes.mapNotNull { it.imagePath })
         startActivity(Intent(this, ImageViewerActivity::class.java).apply {
-            putExtra("image_ids", ids)
+            putStringArrayListExtra("image_paths", paths)
             putExtra("start_index", position)
         })
     }

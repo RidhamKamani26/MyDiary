@@ -17,6 +17,9 @@ class DiaryViewModel @Inject constructor(
     val privateNotes: LiveData<List<DiaryNote>> = repository.privateNotes
     val noteDates: LiveData<List<String>> = repository.noteDates
 
+    /** Notes that have an attached image — feeds ActivityImage gallery. */
+    val notesWithImages: LiveData<List<DiaryNote>> = repository.notesWithImages
+
     private val _searchQuery = MutableLiveData<String>("")
     val searchResults: LiveData<List<DiaryNote>> = _searchQuery.switchMap { query ->
         if (query.isBlank()) repository.allNotes
@@ -28,18 +31,9 @@ class DiaryViewModel @Inject constructor(
     fun getNotesByDate(startOfDay: Long, endOfDay: Long): LiveData<List<DiaryNote>> =
         repository.getNotesByDate(startOfDay, endOfDay)
 
-    fun insertNote(note: DiaryNote) = viewModelScope.launch {
-        repository.insertNote(note)
-    }
-
-    fun updateNote(note: DiaryNote) = viewModelScope.launch {
-        repository.updateNote(note)
-    }
-
-    fun deleteNote(note: DiaryNote) = viewModelScope.launch {
-        repository.deleteNote(note)
-    }
-
+    fun insertNote(note: DiaryNote) = viewModelScope.launch { repository.insertNote(note) }
+    fun updateNote(note: DiaryNote) = viewModelScope.launch { repository.updateNote(note) }
+    fun deleteNote(note: DiaryNote) = viewModelScope.launch { repository.deleteNote(note) }
     suspend fun getNoteById(id: Long): DiaryNote? = repository.getNoteById(id)
 
     // Vault
@@ -47,11 +41,6 @@ class DiaryViewModel @Inject constructor(
     fun getVaultVideos(): LiveData<List<VaultMedia>> = repository.getMediaByType("video")
     fun getVaultAudios(): LiveData<List<VaultMedia>> = repository.getMediaByType("audio")
 
-    fun addVaultMedia(media: VaultMedia) = viewModelScope.launch {
-        repository.insertVaultMedia(media)
-    }
-
-    fun deleteVaultMedia(media: VaultMedia) = viewModelScope.launch {
-        repository.deleteVaultMedia(media)
-    }
+    fun addVaultMedia(media: VaultMedia) = viewModelScope.launch { repository.insertVaultMedia(media) }
+    fun deleteVaultMedia(media: VaultMedia) = viewModelScope.launch { repository.deleteVaultMedia(media) }
 }

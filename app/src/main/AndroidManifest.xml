@@ -43,14 +43,12 @@
         <!-- Main -->
         <activity
             android:name=".activities.MainActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:exported="false" />
 
         <!-- Add/Edit Note -->
         <activity
             android:name=".activities.AddNoteActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:exported="false" />
 
         <!-- Note Detail -->
         <activity

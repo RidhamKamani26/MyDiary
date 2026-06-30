@@ -22,8 +22,8 @@ import com.mydiary.app.viewmodels.DiaryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * VaultMediaActivity — used ONLY inside the private PIN-protected Vault
- * (images / videos / audios). Completely separate from ActivityImage.
+ * VaultMediaActivity — used ONLY inside the private PIN-protected Vault.
+ * Reads from VaultMedia table (separate from ActivityImage's DiaryNote images).
  */
 @AndroidEntryPoint
 class VaultMediaActivity : AppCompatActivity() {
@@ -72,9 +72,6 @@ class VaultMediaActivity : AppCompatActivity() {
     private fun setupAdapter() {
         adapter = VaultMediaAdapter(mediaType) { media -> deleteMedia(media) }
 
-        // Tapping a vault image also opens the same ImageViewerActivity,
-        // but the list is the VAULT's images only — kept separate from
-        // ActivityImage's main-screen gallery.
         adapter.onItemTap = { _, position ->
             if (mediaType == "image") openImageViewer(position)
         }
@@ -97,10 +94,11 @@ class VaultMediaActivity : AppCompatActivity() {
         }
     }
 
+    /** Uses the same generic ImageViewerActivity, passing vault image paths. */
     private fun openImageViewer(position: Int) {
-        val ids = currentImages.map { it.id }.toLongArray()
+        val paths = ArrayList(currentImages.map { it.vaultPath })
         startActivity(Intent(this, ImageViewerActivity::class.java).apply {
-            putExtra("image_ids", ids)
+            putStringArrayListExtra("image_paths", paths)
             putExtra("start_index", position)
         })
     }

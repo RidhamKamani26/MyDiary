@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:2:1-123:12
-INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:2:1-123:12
-INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:2:1-123:12
-INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:2:1-123:12
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:2:1-121:12
+INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:2:1-121:12
+INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:2:1-121:12
+INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:2:1-121:12
 MERGED from [androidx.databinding:viewbinding:8.7.3] C:\Users\VICTUS\.gradle\caches\8.9\transforms\45f5fa350167a0139857855d43b8f959\transformed\viewbinding-8.7.3\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-common:2.8.5] C:\Users\VICTUS\.gradle\caches\8.9\transforms\808046699a43a28616dc9f46c5e924e9\transformed\navigation-common-2.8.5\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.8.5] C:\Users\VICTUS\.gradle\caches\8.9\transforms\c4e3667f27884c55be0dd03b3a13d198\transformed\navigation-common-ktx-2.8.5\AndroidManifest.xml:2:1-7:12
@@ -128,8 +128,8 @@ MERGED from [androidx.biometric:biometric:1.1.0] C:\Users\VICTUS\.gradle\caches\
 	android:name
 		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:14:22-71
 application
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:16:5-121:19
-INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:16:5-121:19
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:16:5-119:19
+INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:16:5-119:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\VICTUS\.gradle\caches\8.9\transforms\51d324e89614a265ce09bf64af11b426\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\VICTUS\.gradle\caches\8.9\transforms\51d324e89614a265ce09bf64af11b426\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\VICTUS\.gradle\caches\8.9\transforms\33d09edeee7eebce77b00546a37165f6\transformed\constraintlayout-2.2.0\AndroidManifest.xml:7:5-20
@@ -197,115 +197,111 @@ ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:38:9-41:40
 	android:name
 		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:39:13-58
 activity#com.mydiary.app.activities.MainActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:44:9-47:58
-	android:windowSoftInputMode
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:47:13-55
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:44:9-46:40
 	android:exported
 		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:46:13-37
 	android:name
 		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:45:13-52
 activity#com.mydiary.app.activities.AddNoteActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:50:9-53:58
-	android:windowSoftInputMode
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:53:13-55
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:49:9-51:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:52:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:51:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:51:13-55
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:50:13-55
 activity#com.mydiary.app.activities.NoteDetailActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:56:9-58:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:54:9-56:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:58:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:57:13-58
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:55:13-58
 activity#com.mydiary.app.activities.SetPasswordActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:61:9-63:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:59:9-61:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:63:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:61:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:62:13-59
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:60:13-59
 activity#com.mydiary.app.activities.SecurityQuestionActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:66:9-68:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:64:9-66:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:68:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:66:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:67:13-64
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:65:13-64
 activity#com.mydiary.app.activities.VaultActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:71:9-73:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:69:9-71:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:73:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:71:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:72:13-53
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:70:13-53
 activity#com.mydiary.app.activities.ActivityImage
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:79:9-81:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:77:9-79:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:81:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:79:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:80:13-53
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:78:13-53
 activity#com.mydiary.app.activities.ImageViewerActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:83:9-86:52
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:81:9-84:52
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:85:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:83:13-37
 	android:theme
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:86:13-49
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:84:13-49
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:84:13-59
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:82:13-59
 activity#com.mydiary.app.activities.ThemesActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:90:9-92:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:88:9-90:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:92:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:90:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:91:13-54
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:89:13-54
 activity#com.mydiary.app.activities.SettingsActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:95:9-97:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:93:9-95:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:97:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:95:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:96:13-56
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:94:13-56
 activity#com.mydiary.app.activities.PasswordSettingsActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:100:9-102:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:98:9-100:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:102:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:100:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:101:13-64
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:99:13-64
 activity#com.mydiary.app.activities.CalendarActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:105:9-107:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:103:9-105:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:107:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:105:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:106:13-56
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:104:13-56
 activity#com.mydiary.app.activities.VaultMediaActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:110:9-112:40
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:108:9-110:40
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:112:13-37
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:110:13-37
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:111:13-58
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:109:13-58
 activity#com.mydiary.app.activities.SplashCoverActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:114:13-122
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:112:13-122
 	android:noHistory
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:114:95-119
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:112:95-119
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:114:70-94
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:112:70-94
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:114:23-69
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:112:23-69
 activity#com.mydiary.app.activities.VaultSettingsActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:115:9-95
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:113:9-95
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:115:68-92
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:113:68-92
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:115:19-67
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:113:19-67
 activity#com.mydiary.app.activities.ForgotPasswordActivity
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:116:9-96
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:114:9-96
 	android:exported
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:116:69-93
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:114:69-93
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:116:19-68
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:114:19-68
 meta-data#preloaded_fonts
-ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:118:9-120:57
+ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:116:9-118:57
 	android:resource
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:120:13-54
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:118:13-54
 	android:name
-		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:119:13-43
+		ADDED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml:117:13-43
 uses-sdk
 INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\MyWork\MyDiary\app\src\main\AndroidManifest.xml

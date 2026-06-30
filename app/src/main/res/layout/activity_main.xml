@@ -139,14 +139,14 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_lock"
-                app:tint="@color/bottom_nav_icon_inactive" />
+                android:src="@drawable/ic_lock" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Private"
                 android:textSize="10sp"
-                android:textColor="@color/bottom_nav_icon_inactive" />
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -159,14 +159,14 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_calendar"
-                app:tint="@color/bottom_nav_icon_inactive" />
+                android:src="@drawable/ic_calendar" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Calendar"
                 android:textSize="10sp"
-                android:textColor="@color/bottom_nav_icon_inactive" />
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <!-- FAB Center -->
@@ -184,7 +184,7 @@
                 app:backgroundTint="@color/pink_primary"
                 app:tint="@color/white"
                 app:fabSize="normal"
-                app:elevation="6dp" />
+                app:elevation="6dp"/>
         </FrameLayout>
 
         <LinearLayout
@@ -197,14 +197,14 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_image"
-                app:tint="@color/bottom_nav_icon_inactive" />
+                android:src="@drawable/ic_image"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Images"
                 android:textSize="10sp"
-                android:textColor="@color/bottom_nav_icon_inactive" />
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -217,14 +217,14 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_settings"
-                app:tint="@color/bottom_nav_icon_inactive" />
+                android:src="@drawable/ic_settings" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Settings"
                 android:textSize="10sp"
-                android:textColor="@color/bottom_nav_icon_inactive" />
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
         </LinearLayout>
 
     </LinearLayout>

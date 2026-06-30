@@ -17,17 +17,17 @@ class DiaryRepository @Inject constructor(
     val privateNotes: LiveData<List<DiaryNote>> = noteDao.getPrivateNotes()
     val noteDates: LiveData<List<String>> = noteDao.getNoteDates()
 
+    /** All notes that have an attached image — used for ActivityImage gallery. */
+    val notesWithImages: LiveData<List<DiaryNote>> = noteDao.getNotesWithImages()
+
     fun getNotesByDate(startOfDay: Long, endOfDay: Long): LiveData<List<DiaryNote>> =
         noteDao.getNotesByDate(startOfDay, endOfDay)
 
     fun searchNotes(query: String): LiveData<List<DiaryNote>> = noteDao.searchNotes(query)
 
     suspend fun insertNote(note: DiaryNote): Long = noteDao.insertNote(note)
-
     suspend fun updateNote(note: DiaryNote) = noteDao.updateNote(note)
-
     suspend fun deleteNote(note: DiaryNote) = noteDao.deleteNote(note)
-
     suspend fun getNoteById(id: Long): DiaryNote? = noteDao.getNoteById(id)
 
     // Vault
@@ -35,6 +35,5 @@ class DiaryRepository @Inject constructor(
         vaultMediaDao.getMediaByType(type)
 
     suspend fun insertVaultMedia(media: VaultMedia): Long = vaultMediaDao.insertMedia(media)
-
     suspend fun deleteVaultMedia(media: VaultMedia) = vaultMediaDao.deleteMedia(media)
 }

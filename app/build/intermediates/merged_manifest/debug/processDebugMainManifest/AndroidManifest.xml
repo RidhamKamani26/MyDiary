@@ -38,6 +38,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/Theme.MyDiary" >
 
         <!-- Splash Screen -->
@@ -62,14 +63,12 @@
         <!-- Main -->
         <activity
             android:name="com.mydiary.app.activities.MainActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:exported="false" />
 
         <!-- Add/Edit Note -->
         <activity
             android:name="com.mydiary.app.activities.AddNoteActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:exported="false" />
 
         <!-- Note Detail -->
         <activity

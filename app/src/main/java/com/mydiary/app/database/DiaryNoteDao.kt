@@ -25,6 +25,13 @@ interface DiaryNoteDao {
     @Query("SELECT * FROM diary_notes WHERE (title LIKE '%' || :query || '%' OR description LIKE '%' || :query || '%') AND isPrivate = 0 ORDER BY createdAt DESC")
     fun searchNotes(query: String): LiveData<List<DiaryNote>>
 
+    /**
+     * Returns every note that has a non-null, non-empty imagePath.
+     * Used by ActivityImage to show all diary images in one gallery.
+     */
+    @Query("SELECT * FROM diary_notes WHERE imagePath IS NOT NULL AND imagePath != '' AND isPrivate = 0 ORDER BY createdAt DESC")
+    fun getNotesWithImages(): LiveData<List<DiaryNote>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: DiaryNote): Long
 

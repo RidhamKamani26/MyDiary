@@ -31,11 +31,19 @@ class MainActivity : AppCompatActivity() {
 
         prefs = PrefsManager.getInstance(this)
 
+
+        SetupTheme()
         setupRecyclerView()
         setupBottomNav()
         setupSearch()
         setupFab()
         observeNotes()
+    }
+
+    private fun SetupTheme(){
+        findViewById<ImageView>(R.id.fabAvatar).setOnClickListener {
+            startActivity(Intent(this, ThemesActivity::class.java))
+        }
     }
 
     private fun setupRecyclerView() {

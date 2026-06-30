@@ -17,6 +17,7 @@ color pink_bg
 color pink_card
 color pink_light
 color pink_primary
+color pink_primary_dark
 color purple_200
 color purple_500
 color purple_700
@@ -104,6 +105,7 @@ drawable ic_lock_open
 drawable ic_more_vert
 drawable ic_mushroom
 drawable ic_palette
+drawable ic_password
 drawable ic_policy
 drawable ic_privacy_illustration
 drawable ic_question

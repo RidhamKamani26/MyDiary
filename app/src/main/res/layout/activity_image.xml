@@ -31,7 +31,8 @@
             android:text="Images"
             android:textSize="17sp"
             android:textColor="@color/text_primary"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textStyle="bold"/>
 
         <View android:layout_width="40dp" android:layout_height="40dp" />
 
