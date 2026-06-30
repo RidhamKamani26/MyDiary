@@ -24,6 +24,10 @@
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_splash_cover.xml"
     },
     {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\item_calendar_day.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_calendar_day.xml"
+    },
+    {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\page_onboarding_storage.xml",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_storage.xml"
     },
@@ -38,6 +42,10 @@
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_onboarding.xml",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_onboarding.xml"
+    },
+    {
+        "merged": "com.mydiary.app-mergeDebugResources-59:/layout/activity_set_password.xml",
+        "source": "com.mydiary.app-main-62:/layout/activity_set_password.xml"
     },
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\item_theme.xml",
@@ -66,10 +74,6 @@
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_settings.xml",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_settings.xml"
-    },
-    {
-        "merged": "com.mydiary.app-mergeDebugResources-59:/layout/activity_add_note.xml",
-        "source": "com.mydiary.app-main-62:/layout/activity_add_note.xml"
     },
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_note_detail.xml",
@@ -114,5 +118,9 @@
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\activity_themes.xml",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_themes.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-mergeDebugResources-59:\\layout\\item_font.xml",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_font.xml"
     }
 ]

@@ -1,75 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
-    <!-- Header -->
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <!-- ── Top header image banner ── -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp">
+        android:layout_height="200dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bg_main_header" />
+            android:src="@drawable/bg_main_header"
+            android:scaleType="centerCrop" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:fontFamily="@font/poppins_semibold"
-            android:gravity="center"
-            android:paddingTop="40dp"
-            android:text="Calendar"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
+        <!-- Back button -->
         <ImageView
             android:id="@+id/ibBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="top|start"
+            android:layout_marginTop="36dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="8dp"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <!-- Calendar title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="42dp"
+            android:text="Calendar"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:gravity="center" />
+
     </FrameLayout>
 
-    <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <!-- ── Custom Calendar Card ── -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="-24dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp">
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#FFF0F5">
 
-        <CalendarView
-            android:id="@+id/calendarView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="12dp">
+
+            <!-- Month navigation row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <ImageView
+                    android:id="@+id/ibPrevMonth"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_chevron_left"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="6dp" />
+
+                <TextView
+                    android:id="@+id/tvMonthYear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="February 2024"
+                    android:textSize="17sp"
+                    android:textColor="@color/pink_primary"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/ibNextMonth"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_chevron_right_pink"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="6dp" />
+
+            </LinearLayout>
+
+            <!-- Day-of-week header row: Sun Mon Tue Wed Thu Fri Sat -->
+            <LinearLayout
+                android:id="@+id/llDayHeaders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView style="@style/DayHeaderStyle" android:text="Sun" />
+                <TextView style="@style/DayHeaderStyle" android:text="Mon" />
+                <TextView style="@style/DayHeaderStyle" android:text="Tue" />
+                <TextView style="@style/DayHeaderStyle" android:text="Wed" />
+                <TextView style="@style/DayHeaderStyle" android:text="Thu" />
+                <TextView style="@style/DayHeaderStyle" android:text="Fri" />
+                <TextView style="@style/DayHeaderStyle" android:text="Sat" />
+
+            </LinearLayout>
+
+            <!-- Calendar grid — 6 rows × 7 cols of day cells -->
+            <GridView
+                android:id="@+id/gridCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="7"
+                android:horizontalSpacing="4dp"
+                android:verticalSpacing="4dp"
+                android:stretchMode="columnWidth"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
+    <!-- ── Notes for selected date ── -->
     <TextView
-        android:id="@+id/tvNoEntries"
+        android:id="@+id/tvSelectedDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="center"
-        android:paddingHorizontal="16dp"
-        android:text="No Entries On This Day"
-        android:textColor="@color/text_primary"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
         android:textSize="15sp"
-        android:visibility="gone" />
+        android:textColor="@color/text_primary"
+        android:paddingHorizontal="4dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCalendarNotes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginTop="8dp"
         android:clipToPadding="false"
-        android:paddingHorizontal="0dp" />
+        android:paddingBottom="16dp" />
+
+    <!-- Empty state -->
+    <LinearLayout
+        android:id="@+id/layoutNoEntries"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Entries On This Day"
+            android:textSize="15sp"
+            android:textColor="@color/text_primary"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Maybe it's time to add one"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center" />
+
+    </LinearLayout>
+
 </LinearLayout>

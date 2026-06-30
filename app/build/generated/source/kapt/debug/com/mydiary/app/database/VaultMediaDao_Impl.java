@@ -100,7 +100,7 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
   }
 
   @Override
-  public Object insertMedia(final VaultMedia media, final Continuation<? super Long> $completion) {
+  public Object insertMedia(final VaultMedia media, final Continuation<? super Long> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -114,11 +114,11 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteMedia(final VaultMedia media, final Continuation<? super Unit> $completion) {
+  public Object deleteMedia(final VaultMedia media, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -132,11 +132,11 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteMediaById(final long id, final Continuation<? super Unit> $completion) {
+  public Object deleteMediaById(final long id, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -157,7 +157,7 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           __preparedStmtOfDeleteMediaById.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override

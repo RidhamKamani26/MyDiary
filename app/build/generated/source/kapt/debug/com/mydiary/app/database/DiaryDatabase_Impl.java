@@ -33,13 +33,13 @@ public final class DiaryDatabase_Impl extends DiaryDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `diary_notes` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `imagePath` TEXT, `moodEmoji` TEXT, `backgroundType` TEXT NOT NULL, `backgroundValue` TEXT NOT NULL, `date` INTEGER NOT NULL, `isPrivate` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `diary_notes` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `imagePath` TEXT, `moodEmoji` TEXT, `backgroundType` TEXT NOT NULL, `backgroundValue` TEXT NOT NULL, `fontFileName` TEXT NOT NULL, `date` INTEGER NOT NULL, `isPrivate` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `vault_media` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `originalPath` TEXT NOT NULL, `vaultPath` TEXT NOT NULL, `mediaType` TEXT NOT NULL, `fileName` TEXT NOT NULL, `addedAt` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '28d118f03fb92b2f926c26af4269d155')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'af8652b28f0b7ad64d576a79a2930877')");
       }
 
       @Override
@@ -89,7 +89,7 @@ public final class DiaryDatabase_Impl extends DiaryDatabase {
       @NonNull
       public RoomOpenHelper.ValidationResult onValidateSchema(
           @NonNull final SupportSQLiteDatabase db) {
-        final HashMap<String, TableInfo.Column> _columnsDiaryNotes = new HashMap<String, TableInfo.Column>(10);
+        final HashMap<String, TableInfo.Column> _columnsDiaryNotes = new HashMap<String, TableInfo.Column>(11);
         _columnsDiaryNotes.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsDiaryNotes.put("title", new TableInfo.Column("title", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsDiaryNotes.put("description", new TableInfo.Column("description", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -97,6 +97,7 @@ public final class DiaryDatabase_Impl extends DiaryDatabase {
         _columnsDiaryNotes.put("moodEmoji", new TableInfo.Column("moodEmoji", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsDiaryNotes.put("backgroundType", new TableInfo.Column("backgroundType", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsDiaryNotes.put("backgroundValue", new TableInfo.Column("backgroundValue", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsDiaryNotes.put("fontFileName", new TableInfo.Column("fontFileName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsDiaryNotes.put("date", new TableInfo.Column("date", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsDiaryNotes.put("isPrivate", new TableInfo.Column("isPrivate", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsDiaryNotes.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -127,7 +128,7 @@ public final class DiaryDatabase_Impl extends DiaryDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "28d118f03fb92b2f926c26af4269d155", "5de1465fda460e208de58197205694b0");
+    }, "af8652b28f0b7ad64d576a79a2930877", "a5217924055b12a34042cb2e8376a2e8");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

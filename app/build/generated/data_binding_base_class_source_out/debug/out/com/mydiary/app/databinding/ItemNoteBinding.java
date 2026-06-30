@@ -4,6 +4,7 @@ package com.mydiary.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,12 @@ import java.lang.String;
 public final class ItemNoteBinding implements ViewBinding {
   @NonNull
   private final CardView rootView;
+
+  @NonNull
+  public final ImageView ivImageIndicator;
+
+  @NonNull
+  public final ImageView ivItemBg;
 
   @NonNull
   public final TextView tvDay;
@@ -40,10 +47,13 @@ public final class ItemNoteBinding implements ViewBinding {
   @NonNull
   public final TextView tvYear;
 
-  private ItemNoteBinding(@NonNull CardView rootView, @NonNull TextView tvDay,
-      @NonNull TextView tvDescription, @NonNull TextView tvMonth, @NonNull TextView tvMoodEmoji,
-      @NonNull TextView tvTime, @NonNull TextView tvTitle, @NonNull TextView tvYear) {
+  private ItemNoteBinding(@NonNull CardView rootView, @NonNull ImageView ivImageIndicator,
+      @NonNull ImageView ivItemBg, @NonNull TextView tvDay, @NonNull TextView tvDescription,
+      @NonNull TextView tvMonth, @NonNull TextView tvMoodEmoji, @NonNull TextView tvTime,
+      @NonNull TextView tvTitle, @NonNull TextView tvYear) {
     this.rootView = rootView;
+    this.ivImageIndicator = ivImageIndicator;
+    this.ivItemBg = ivItemBg;
     this.tvDay = tvDay;
     this.tvDescription = tvDescription;
     this.tvMonth = tvMonth;
@@ -80,6 +90,18 @@ public final class ItemNoteBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.ivImageIndicator;
+      ImageView ivImageIndicator = ViewBindings.findChildViewById(rootView, id);
+      if (ivImageIndicator == null) {
+        break missingId;
+      }
+
+      id = R.id.ivItemBg;
+      ImageView ivItemBg = ViewBindings.findChildViewById(rootView, id);
+      if (ivItemBg == null) {
+        break missingId;
+      }
+
       id = R.id.tvDay;
       TextView tvDay = ViewBindings.findChildViewById(rootView, id);
       if (tvDay == null) {
@@ -122,8 +144,8 @@ public final class ItemNoteBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemNoteBinding((CardView) rootView, tvDay, tvDescription, tvMonth, tvMoodEmoji,
-          tvTime, tvTitle, tvYear);
+      return new ItemNoteBinding((CardView) rootView, ivImageIndicator, ivItemBg, tvDay,
+          tvDescription, tvMonth, tvMoodEmoji, tvTime, tvTitle, tvYear);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

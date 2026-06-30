@@ -4,8 +4,8 @@ package com.mydiary.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +18,7 @@ import java.lang.String;
 
 public final class ActivitySetPasswordBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final FrameLayout rootView;
 
   @NonNull
   public final TextView btn0;
@@ -54,6 +54,9 @@ public final class ActivitySetPasswordBinding implements ViewBinding {
   public final ImageView btnBackspace;
 
   @NonNull
+  public final TextView btnview;
+
+  @NonNull
   public final ImageView dot1;
 
   @NonNull
@@ -69,18 +72,22 @@ public final class ActivitySetPasswordBinding implements ViewBinding {
   public final ImageView ibBack;
 
   @NonNull
+  public final ImageView ivHeaderBg;
+
+  @NonNull
   public final TextView tvInstruction;
 
   @NonNull
-  public final TextView tvTitle;
+  public final TextView tvScreenTitle;
 
-  private ActivitySetPasswordBinding(@NonNull LinearLayout rootView, @NonNull TextView btn0,
+  private ActivitySetPasswordBinding(@NonNull FrameLayout rootView, @NonNull TextView btn0,
       @NonNull TextView btn1, @NonNull TextView btn2, @NonNull TextView btn3,
       @NonNull TextView btn4, @NonNull TextView btn5, @NonNull TextView btn6,
       @NonNull TextView btn7, @NonNull TextView btn8, @NonNull TextView btn9,
-      @NonNull ImageView btnBackspace, @NonNull ImageView dot1, @NonNull ImageView dot2,
-      @NonNull ImageView dot3, @NonNull ImageView dot4, @NonNull ImageView ibBack,
-      @NonNull TextView tvInstruction, @NonNull TextView tvTitle) {
+      @NonNull ImageView btnBackspace, @NonNull TextView btnview, @NonNull ImageView dot1,
+      @NonNull ImageView dot2, @NonNull ImageView dot3, @NonNull ImageView dot4,
+      @NonNull ImageView ibBack, @NonNull ImageView ivHeaderBg, @NonNull TextView tvInstruction,
+      @NonNull TextView tvScreenTitle) {
     this.rootView = rootView;
     this.btn0 = btn0;
     this.btn1 = btn1;
@@ -93,18 +100,20 @@ public final class ActivitySetPasswordBinding implements ViewBinding {
     this.btn8 = btn8;
     this.btn9 = btn9;
     this.btnBackspace = btnBackspace;
+    this.btnview = btnview;
     this.dot1 = dot1;
     this.dot2 = dot2;
     this.dot3 = dot3;
     this.dot4 = dot4;
     this.ibBack = ibBack;
+    this.ivHeaderBg = ivHeaderBg;
     this.tvInstruction = tvInstruction;
-    this.tvTitle = tvTitle;
+    this.tvScreenTitle = tvScreenTitle;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -195,6 +204,12 @@ public final class ActivitySetPasswordBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnview;
+      TextView btnview = ViewBindings.findChildViewById(rootView, id);
+      if (btnview == null) {
+        break missingId;
+      }
+
       id = R.id.dot1;
       ImageView dot1 = ViewBindings.findChildViewById(rootView, id);
       if (dot1 == null) {
@@ -225,21 +240,27 @@ public final class ActivitySetPasswordBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.ivHeaderBg;
+      ImageView ivHeaderBg = ViewBindings.findChildViewById(rootView, id);
+      if (ivHeaderBg == null) {
+        break missingId;
+      }
+
       id = R.id.tvInstruction;
       TextView tvInstruction = ViewBindings.findChildViewById(rootView, id);
       if (tvInstruction == null) {
         break missingId;
       }
 
-      id = R.id.tvTitle;
-      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
-      if (tvTitle == null) {
+      id = R.id.tvScreenTitle;
+      TextView tvScreenTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvScreenTitle == null) {
         break missingId;
       }
 
-      return new ActivitySetPasswordBinding((LinearLayout) rootView, btn0, btn1, btn2, btn3, btn4,
-          btn5, btn6, btn7, btn8, btn9, btnBackspace, dot1, dot2, dot3, dot4, ibBack, tvInstruction,
-          tvTitle);
+      return new ActivitySetPasswordBinding((FrameLayout) rootView, btn0, btn1, btn2, btn3, btn4,
+          btn5, btn6, btn7, btn8, btn9, btnBackspace, btnview, dot1, dot2, dot3, dot4, ibBack,
+          ivHeaderBg, tvInstruction, tvScreenTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

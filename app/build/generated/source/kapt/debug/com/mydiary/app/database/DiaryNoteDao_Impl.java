@@ -52,7 +52,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `diary_notes` (`id`,`title`,`description`,`imagePath`,`moodEmoji`,`backgroundType`,`backgroundValue`,`date`,`isPrivate`,`createdAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `diary_notes` (`id`,`title`,`description`,`imagePath`,`moodEmoji`,`backgroundType`,`backgroundValue`,`fontFileName`,`date`,`isPrivate`,`createdAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -89,15 +89,20 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
         } else {
           statement.bindString(7, entity.getBackgroundValue());
         }
-        final Long _tmp = __converters.dateToTimestamp(entity.getDate());
-        if (_tmp == null) {
+        if (entity.getFontFileName() == null) {
           statement.bindNull(8);
         } else {
-          statement.bindLong(8, _tmp);
+          statement.bindString(8, entity.getFontFileName());
+        }
+        final Long _tmp = __converters.dateToTimestamp(entity.getDate());
+        if (_tmp == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindLong(9, _tmp);
         }
         final int _tmp_1 = entity.isPrivate() ? 1 : 0;
-        statement.bindLong(9, _tmp_1);
-        statement.bindLong(10, entity.getCreatedAt());
+        statement.bindLong(10, _tmp_1);
+        statement.bindLong(11, entity.getCreatedAt());
       }
     };
     this.__deletionAdapterOfDiaryNote = new EntityDeletionOrUpdateAdapter<DiaryNote>(__db) {
@@ -117,7 +122,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `diary_notes` SET `id` = ?,`title` = ?,`description` = ?,`imagePath` = ?,`moodEmoji` = ?,`backgroundType` = ?,`backgroundValue` = ?,`date` = ?,`isPrivate` = ?,`createdAt` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `diary_notes` SET `id` = ?,`title` = ?,`description` = ?,`imagePath` = ?,`moodEmoji` = ?,`backgroundType` = ?,`backgroundValue` = ?,`fontFileName` = ?,`date` = ?,`isPrivate` = ?,`createdAt` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -154,16 +159,21 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
         } else {
           statement.bindString(7, entity.getBackgroundValue());
         }
-        final Long _tmp = __converters.dateToTimestamp(entity.getDate());
-        if (_tmp == null) {
+        if (entity.getFontFileName() == null) {
           statement.bindNull(8);
         } else {
-          statement.bindLong(8, _tmp);
+          statement.bindString(8, entity.getFontFileName());
+        }
+        final Long _tmp = __converters.dateToTimestamp(entity.getDate());
+        if (_tmp == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindLong(9, _tmp);
         }
         final int _tmp_1 = entity.isPrivate() ? 1 : 0;
-        statement.bindLong(9, _tmp_1);
-        statement.bindLong(10, entity.getCreatedAt());
-        statement.bindLong(11, entity.getId());
+        statement.bindLong(10, _tmp_1);
+        statement.bindLong(11, entity.getCreatedAt());
+        statement.bindLong(12, entity.getId());
       }
     };
     this.__preparedStmtOfDeleteNoteById = new SharedSQLiteStatement(__db) {
@@ -177,7 +187,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
   }
 
   @Override
-  public Object insertNote(final DiaryNote note, final Continuation<? super Long> $completion) {
+  public Object insertNote(final DiaryNote note, final Continuation<? super Long> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -191,11 +201,11 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteNote(final DiaryNote note, final Continuation<? super Unit> $completion) {
+  public Object deleteNote(final DiaryNote note, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -209,11 +219,11 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object updateNote(final DiaryNote note, final Continuation<? super Unit> $completion) {
+  public Object updateNote(final DiaryNote note, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -227,11 +237,11 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteNoteById(final long id, final Continuation<? super Unit> $completion) {
+  public Object deleteNoteById(final long id, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -252,7 +262,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           __preparedStmtOfDeleteNoteById.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
@@ -272,6 +282,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           final int _cursorIndexOfMoodEmoji = CursorUtil.getColumnIndexOrThrow(_cursor, "moodEmoji");
           final int _cursorIndexOfBackgroundType = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundType");
           final int _cursorIndexOfBackgroundValue = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundValue");
+          final int _cursorIndexOfFontFileName = CursorUtil.getColumnIndexOrThrow(_cursor, "fontFileName");
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfIsPrivate = CursorUtil.getColumnIndexOrThrow(_cursor, "isPrivate");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
@@ -316,6 +327,12 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             } else {
               _tmpBackgroundValue = _cursor.getString(_cursorIndexOfBackgroundValue);
             }
+            final String _tmpFontFileName;
+            if (_cursor.isNull(_cursorIndexOfFontFileName)) {
+              _tmpFontFileName = null;
+            } else {
+              _tmpFontFileName = _cursor.getString(_cursorIndexOfFontFileName);
+            }
             final Date _tmpDate;
             final Long _tmp;
             if (_cursor.isNull(_cursorIndexOfDate)) {
@@ -330,7 +347,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             _tmpIsPrivate = _tmp_1 != 0;
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _item = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
+            _item = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpFontFileName,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
             _result.add(_item);
           }
           return _result;
@@ -363,6 +380,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           final int _cursorIndexOfMoodEmoji = CursorUtil.getColumnIndexOrThrow(_cursor, "moodEmoji");
           final int _cursorIndexOfBackgroundType = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundType");
           final int _cursorIndexOfBackgroundValue = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundValue");
+          final int _cursorIndexOfFontFileName = CursorUtil.getColumnIndexOrThrow(_cursor, "fontFileName");
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfIsPrivate = CursorUtil.getColumnIndexOrThrow(_cursor, "isPrivate");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
@@ -407,6 +425,12 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             } else {
               _tmpBackgroundValue = _cursor.getString(_cursorIndexOfBackgroundValue);
             }
+            final String _tmpFontFileName;
+            if (_cursor.isNull(_cursorIndexOfFontFileName)) {
+              _tmpFontFileName = null;
+            } else {
+              _tmpFontFileName = _cursor.getString(_cursorIndexOfFontFileName);
+            }
             final Date _tmpDate;
             final Long _tmp;
             if (_cursor.isNull(_cursorIndexOfDate)) {
@@ -421,7 +445,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             _tmpIsPrivate = _tmp_1 != 0;
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _item = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
+            _item = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpFontFileName,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
             _result.add(_item);
           }
           return _result;
@@ -438,7 +462,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
   }
 
   @Override
-  public Object getNoteById(final long id, final Continuation<? super DiaryNote> $completion) {
+  public Object getNoteById(final long id, final Continuation<? super DiaryNote> arg1) {
     final String _sql = "SELECT * FROM diary_notes WHERE id = ? LIMIT 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -457,6 +481,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           final int _cursorIndexOfMoodEmoji = CursorUtil.getColumnIndexOrThrow(_cursor, "moodEmoji");
           final int _cursorIndexOfBackgroundType = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundType");
           final int _cursorIndexOfBackgroundValue = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundValue");
+          final int _cursorIndexOfFontFileName = CursorUtil.getColumnIndexOrThrow(_cursor, "fontFileName");
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfIsPrivate = CursorUtil.getColumnIndexOrThrow(_cursor, "isPrivate");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
@@ -500,6 +525,12 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             } else {
               _tmpBackgroundValue = _cursor.getString(_cursorIndexOfBackgroundValue);
             }
+            final String _tmpFontFileName;
+            if (_cursor.isNull(_cursorIndexOfFontFileName)) {
+              _tmpFontFileName = null;
+            } else {
+              _tmpFontFileName = _cursor.getString(_cursorIndexOfFontFileName);
+            }
             final Date _tmpDate;
             final Long _tmp;
             if (_cursor.isNull(_cursorIndexOfDate)) {
@@ -514,7 +545,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             _tmpIsPrivate = _tmp_1 != 0;
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _result = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
+            _result = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpFontFileName,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
           } else {
             _result = null;
           }
@@ -524,7 +555,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
@@ -548,6 +579,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           final int _cursorIndexOfMoodEmoji = CursorUtil.getColumnIndexOrThrow(_cursor, "moodEmoji");
           final int _cursorIndexOfBackgroundType = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundType");
           final int _cursorIndexOfBackgroundValue = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundValue");
+          final int _cursorIndexOfFontFileName = CursorUtil.getColumnIndexOrThrow(_cursor, "fontFileName");
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfIsPrivate = CursorUtil.getColumnIndexOrThrow(_cursor, "isPrivate");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
@@ -592,6 +624,12 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             } else {
               _tmpBackgroundValue = _cursor.getString(_cursorIndexOfBackgroundValue);
             }
+            final String _tmpFontFileName;
+            if (_cursor.isNull(_cursorIndexOfFontFileName)) {
+              _tmpFontFileName = null;
+            } else {
+              _tmpFontFileName = _cursor.getString(_cursorIndexOfFontFileName);
+            }
             final Date _tmpDate;
             final Long _tmp;
             if (_cursor.isNull(_cursorIndexOfDate)) {
@@ -606,7 +644,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             _tmpIsPrivate = _tmp_1 != 0;
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _item = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
+            _item = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpFontFileName,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
             _result.add(_item);
           }
           return _result;
@@ -686,6 +724,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           final int _cursorIndexOfMoodEmoji = CursorUtil.getColumnIndexOrThrow(_cursor, "moodEmoji");
           final int _cursorIndexOfBackgroundType = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundType");
           final int _cursorIndexOfBackgroundValue = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundValue");
+          final int _cursorIndexOfFontFileName = CursorUtil.getColumnIndexOrThrow(_cursor, "fontFileName");
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfIsPrivate = CursorUtil.getColumnIndexOrThrow(_cursor, "isPrivate");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
@@ -730,6 +769,12 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             } else {
               _tmpBackgroundValue = _cursor.getString(_cursorIndexOfBackgroundValue);
             }
+            final String _tmpFontFileName;
+            if (_cursor.isNull(_cursorIndexOfFontFileName)) {
+              _tmpFontFileName = null;
+            } else {
+              _tmpFontFileName = _cursor.getString(_cursorIndexOfFontFileName);
+            }
             final Date _tmpDate;
             final Long _tmp;
             if (_cursor.isNull(_cursorIndexOfDate)) {
@@ -744,7 +789,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
             _tmpIsPrivate = _tmp_1 != 0;
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _item = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
+            _item = new DiaryNote(_tmpId,_tmpTitle,_tmpDescription,_tmpImagePath,_tmpMoodEmoji,_tmpBackgroundType,_tmpBackgroundValue,_tmpFontFileName,_tmpDate,_tmpIsPrivate,_tmpCreatedAt);
             _result.add(_item);
           }
           return _result;

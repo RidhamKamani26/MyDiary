@@ -4,7 +4,7 @@ package com.mydiary.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,25 +23,47 @@ public final class ActivityCalendarBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final CalendarView calendarView;
+  public final GridView gridCalendar;
 
   @NonNull
   public final ImageView ibBack;
 
   @NonNull
+  public final ImageView ibNextMonth;
+
+  @NonNull
+  public final ImageView ibPrevMonth;
+
+  @NonNull
+  public final LinearLayout layoutNoEntries;
+
+  @NonNull
+  public final LinearLayout llDayHeaders;
+
+  @NonNull
   public final RecyclerView rvCalendarNotes;
 
   @NonNull
-  public final TextView tvNoEntries;
+  public final TextView tvMonthYear;
 
-  private ActivityCalendarBinding(@NonNull LinearLayout rootView,
-      @NonNull CalendarView calendarView, @NonNull ImageView ibBack,
-      @NonNull RecyclerView rvCalendarNotes, @NonNull TextView tvNoEntries) {
+  @NonNull
+  public final TextView tvSelectedDate;
+
+  private ActivityCalendarBinding(@NonNull LinearLayout rootView, @NonNull GridView gridCalendar,
+      @NonNull ImageView ibBack, @NonNull ImageView ibNextMonth, @NonNull ImageView ibPrevMonth,
+      @NonNull LinearLayout layoutNoEntries, @NonNull LinearLayout llDayHeaders,
+      @NonNull RecyclerView rvCalendarNotes, @NonNull TextView tvMonthYear,
+      @NonNull TextView tvSelectedDate) {
     this.rootView = rootView;
-    this.calendarView = calendarView;
+    this.gridCalendar = gridCalendar;
     this.ibBack = ibBack;
+    this.ibNextMonth = ibNextMonth;
+    this.ibPrevMonth = ibPrevMonth;
+    this.layoutNoEntries = layoutNoEntries;
+    this.llDayHeaders = llDayHeaders;
     this.rvCalendarNotes = rvCalendarNotes;
-    this.tvNoEntries = tvNoEntries;
+    this.tvMonthYear = tvMonthYear;
+    this.tvSelectedDate = tvSelectedDate;
   }
 
   @Override
@@ -71,9 +93,9 @@ public final class ActivityCalendarBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.calendarView;
-      CalendarView calendarView = ViewBindings.findChildViewById(rootView, id);
-      if (calendarView == null) {
+      id = R.id.gridCalendar;
+      GridView gridCalendar = ViewBindings.findChildViewById(rootView, id);
+      if (gridCalendar == null) {
         break missingId;
       }
 
@@ -83,20 +105,50 @@ public final class ActivityCalendarBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.ibNextMonth;
+      ImageView ibNextMonth = ViewBindings.findChildViewById(rootView, id);
+      if (ibNextMonth == null) {
+        break missingId;
+      }
+
+      id = R.id.ibPrevMonth;
+      ImageView ibPrevMonth = ViewBindings.findChildViewById(rootView, id);
+      if (ibPrevMonth == null) {
+        break missingId;
+      }
+
+      id = R.id.layoutNoEntries;
+      LinearLayout layoutNoEntries = ViewBindings.findChildViewById(rootView, id);
+      if (layoutNoEntries == null) {
+        break missingId;
+      }
+
+      id = R.id.llDayHeaders;
+      LinearLayout llDayHeaders = ViewBindings.findChildViewById(rootView, id);
+      if (llDayHeaders == null) {
+        break missingId;
+      }
+
       id = R.id.rvCalendarNotes;
       RecyclerView rvCalendarNotes = ViewBindings.findChildViewById(rootView, id);
       if (rvCalendarNotes == null) {
         break missingId;
       }
 
-      id = R.id.tvNoEntries;
-      TextView tvNoEntries = ViewBindings.findChildViewById(rootView, id);
-      if (tvNoEntries == null) {
+      id = R.id.tvMonthYear;
+      TextView tvMonthYear = ViewBindings.findChildViewById(rootView, id);
+      if (tvMonthYear == null) {
         break missingId;
       }
 
-      return new ActivityCalendarBinding((LinearLayout) rootView, calendarView, ibBack,
-          rvCalendarNotes, tvNoEntries);
+      id = R.id.tvSelectedDate;
+      TextView tvSelectedDate = ViewBindings.findChildViewById(rootView, id);
+      if (tvSelectedDate == null) {
+        break missingId;
+      }
+
+      return new ActivityCalendarBinding((LinearLayout) rootView, gridCalendar, ibBack, ibNextMonth,
+          ibPrevMonth, layoutNoEntries, llDayHeaders, rvCalendarNotes, tvMonthYear, tvSelectedDate);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

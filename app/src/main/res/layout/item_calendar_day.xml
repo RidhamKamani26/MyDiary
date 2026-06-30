@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:padding="2dp">
+
+    <!-- Background: changes per state (selected/today/normal/other-month) -->
+    <View
+        android:id="@+id/vDayBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_day_normal" />
+
+    <!-- Day number -->
+    <TextView
+        android:id="@+id/tvDayNumber"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textColor="@color/pink_primary" />
+
+    <!-- Dot indicator: note exists for this day -->
+    <View
+        android:id="@+id/vNoteDot"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/bg_note_dot"
+        android:visibility="gone" />
+
+</FrameLayout>

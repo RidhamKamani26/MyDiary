@@ -4,11 +4,14 @@ package com.mydiary.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.mydiary.app.R;
@@ -18,7 +21,13 @@ import java.lang.String;
 
 public final class ActivityNoteDetailBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final FrameLayout rootView;
+
+  @NonNull
+  public final CardView cardImage;
+
+  @NonNull
+  public final LinearLayout detailToolbar;
 
   @NonNull
   public final ImageView ibBack;
@@ -30,38 +39,68 @@ public final class ActivityNoteDetailBinding implements ViewBinding {
   public final ImageView ibMore;
 
   @NonNull
-  public final ImageView ivNoteImage;
+  public final ImageView ivDetailBg;
 
   @NonNull
-  public final TextView tvDescription;
+  public final ImageView ivDetailImage;
 
   @NonNull
-  public final TextView tvMood;
+  public final LinearLayout layoutFontChip;
 
   @NonNull
-  public final TextView tvNoteDate;
+  public final ScrollView scrollDetail;
 
   @NonNull
-  public final TextView tvTitle;
+  public final TextView tvDetailDay;
 
-  private ActivityNoteDetailBinding(@NonNull LinearLayout rootView, @NonNull ImageView ibBack,
-      @NonNull ImageView ibEdit, @NonNull ImageView ibMore, @NonNull ImageView ivNoteImage,
-      @NonNull TextView tvDescription, @NonNull TextView tvMood, @NonNull TextView tvNoteDate,
-      @NonNull TextView tvTitle) {
+  @NonNull
+  public final TextView tvDetailDayName;
+
+  @NonNull
+  public final TextView tvDetailDescription;
+
+  @NonNull
+  public final TextView tvDetailMonthYear;
+
+  @NonNull
+  public final TextView tvDetailMood;
+
+  @NonNull
+  public final TextView tvDetailTitle;
+
+  @NonNull
+  public final TextView tvFontChip;
+
+  private ActivityNoteDetailBinding(@NonNull FrameLayout rootView, @NonNull CardView cardImage,
+      @NonNull LinearLayout detailToolbar, @NonNull ImageView ibBack, @NonNull ImageView ibEdit,
+      @NonNull ImageView ibMore, @NonNull ImageView ivDetailBg, @NonNull ImageView ivDetailImage,
+      @NonNull LinearLayout layoutFontChip, @NonNull ScrollView scrollDetail,
+      @NonNull TextView tvDetailDay, @NonNull TextView tvDetailDayName,
+      @NonNull TextView tvDetailDescription, @NonNull TextView tvDetailMonthYear,
+      @NonNull TextView tvDetailMood, @NonNull TextView tvDetailTitle,
+      @NonNull TextView tvFontChip) {
     this.rootView = rootView;
+    this.cardImage = cardImage;
+    this.detailToolbar = detailToolbar;
     this.ibBack = ibBack;
     this.ibEdit = ibEdit;
     this.ibMore = ibMore;
-    this.ivNoteImage = ivNoteImage;
-    this.tvDescription = tvDescription;
-    this.tvMood = tvMood;
-    this.tvNoteDate = tvNoteDate;
-    this.tvTitle = tvTitle;
+    this.ivDetailBg = ivDetailBg;
+    this.ivDetailImage = ivDetailImage;
+    this.layoutFontChip = layoutFontChip;
+    this.scrollDetail = scrollDetail;
+    this.tvDetailDay = tvDetailDay;
+    this.tvDetailDayName = tvDetailDayName;
+    this.tvDetailDescription = tvDetailDescription;
+    this.tvDetailMonthYear = tvDetailMonthYear;
+    this.tvDetailMood = tvDetailMood;
+    this.tvDetailTitle = tvDetailTitle;
+    this.tvFontChip = tvFontChip;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -86,6 +125,18 @@ public final class ActivityNoteDetailBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.cardImage;
+      CardView cardImage = ViewBindings.findChildViewById(rootView, id);
+      if (cardImage == null) {
+        break missingId;
+      }
+
+      id = R.id.detailToolbar;
+      LinearLayout detailToolbar = ViewBindings.findChildViewById(rootView, id);
+      if (detailToolbar == null) {
+        break missingId;
+      }
+
       id = R.id.ibBack;
       ImageView ibBack = ViewBindings.findChildViewById(rootView, id);
       if (ibBack == null) {
@@ -104,38 +155,76 @@ public final class ActivityNoteDetailBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.ivNoteImage;
-      ImageView ivNoteImage = ViewBindings.findChildViewById(rootView, id);
-      if (ivNoteImage == null) {
+      id = R.id.ivDetailBg;
+      ImageView ivDetailBg = ViewBindings.findChildViewById(rootView, id);
+      if (ivDetailBg == null) {
         break missingId;
       }
 
-      id = R.id.tvDescription;
-      TextView tvDescription = ViewBindings.findChildViewById(rootView, id);
-      if (tvDescription == null) {
+      id = R.id.ivDetailImage;
+      ImageView ivDetailImage = ViewBindings.findChildViewById(rootView, id);
+      if (ivDetailImage == null) {
         break missingId;
       }
 
-      id = R.id.tvMood;
-      TextView tvMood = ViewBindings.findChildViewById(rootView, id);
-      if (tvMood == null) {
+      id = R.id.layoutFontChip;
+      LinearLayout layoutFontChip = ViewBindings.findChildViewById(rootView, id);
+      if (layoutFontChip == null) {
         break missingId;
       }
 
-      id = R.id.tvNoteDate;
-      TextView tvNoteDate = ViewBindings.findChildViewById(rootView, id);
-      if (tvNoteDate == null) {
+      id = R.id.scrollDetail;
+      ScrollView scrollDetail = ViewBindings.findChildViewById(rootView, id);
+      if (scrollDetail == null) {
         break missingId;
       }
 
-      id = R.id.tvTitle;
-      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
-      if (tvTitle == null) {
+      id = R.id.tvDetailDay;
+      TextView tvDetailDay = ViewBindings.findChildViewById(rootView, id);
+      if (tvDetailDay == null) {
         break missingId;
       }
 
-      return new ActivityNoteDetailBinding((LinearLayout) rootView, ibBack, ibEdit, ibMore,
-          ivNoteImage, tvDescription, tvMood, tvNoteDate, tvTitle);
+      id = R.id.tvDetailDayName;
+      TextView tvDetailDayName = ViewBindings.findChildViewById(rootView, id);
+      if (tvDetailDayName == null) {
+        break missingId;
+      }
+
+      id = R.id.tvDetailDescription;
+      TextView tvDetailDescription = ViewBindings.findChildViewById(rootView, id);
+      if (tvDetailDescription == null) {
+        break missingId;
+      }
+
+      id = R.id.tvDetailMonthYear;
+      TextView tvDetailMonthYear = ViewBindings.findChildViewById(rootView, id);
+      if (tvDetailMonthYear == null) {
+        break missingId;
+      }
+
+      id = R.id.tvDetailMood;
+      TextView tvDetailMood = ViewBindings.findChildViewById(rootView, id);
+      if (tvDetailMood == null) {
+        break missingId;
+      }
+
+      id = R.id.tvDetailTitle;
+      TextView tvDetailTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvDetailTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.tvFontChip;
+      TextView tvFontChip = ViewBindings.findChildViewById(rootView, id);
+      if (tvFontChip == null) {
+        break missingId;
+      }
+
+      return new ActivityNoteDetailBinding((FrameLayout) rootView, cardImage, detailToolbar, ibBack,
+          ibEdit, ibMore, ivDetailBg, ivDetailImage, layoutFontChip, scrollDetail, tvDetailDay,
+          tvDetailDayName, tvDetailDescription, tvDetailMonthYear, tvDetailMood, tvDetailTitle,
+          tvFontChip);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

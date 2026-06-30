@@ -4,10 +4,10 @@ package com.mydiary.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.mydiary.app.R;
@@ -17,7 +17,7 @@ import java.lang.String;
 
 public final class ItemBackgroundBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final CardView rootView;
 
   @NonNull
   public final ImageView ivBgPreview;
@@ -25,7 +25,7 @@ public final class ItemBackgroundBinding implements ViewBinding {
   @NonNull
   public final ImageView ivSelected;
 
-  private ItemBackgroundBinding(@NonNull FrameLayout rootView, @NonNull ImageView ivBgPreview,
+  private ItemBackgroundBinding(@NonNull CardView rootView, @NonNull ImageView ivBgPreview,
       @NonNull ImageView ivSelected) {
     this.rootView = rootView;
     this.ivBgPreview = ivBgPreview;
@@ -34,7 +34,7 @@ public final class ItemBackgroundBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public CardView getRoot() {
     return rootView;
   }
 
@@ -71,7 +71,7 @@ public final class ItemBackgroundBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemBackgroundBinding((FrameLayout) rootView, ivBgPreview, ivSelected);
+      return new ItemBackgroundBinding((CardView) rootView, ivBgPreview, ivSelected);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
