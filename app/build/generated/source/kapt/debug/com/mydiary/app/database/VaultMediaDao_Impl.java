@@ -1,6 +1,7 @@
 package com.mydiary.app.database;
 
 import android.database.Cursor;
+import android.os.CancellationSignal;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
@@ -100,7 +101,7 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
   }
 
   @Override
-  public Object insertMedia(final VaultMedia media, final Continuation<? super Long> arg1) {
+  public Object insertMedia(final VaultMedia media, final Continuation<? super Long> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -114,11 +115,11 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object deleteMedia(final VaultMedia media, final Continuation<? super Unit> arg1) {
+  public Object deleteMedia(final VaultMedia media, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -132,11 +133,11 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object deleteMediaById(final long id, final Continuation<? super Unit> arg1) {
+  public Object deleteMediaById(final long id, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -157,7 +158,7 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
           __preparedStmtOfDeleteMediaById.release(_stmt);
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
@@ -290,6 +291,68 @@ public final class VaultMediaDao_Impl implements VaultMediaDao {
         _statement.release();
       }
     });
+  }
+
+  @Override
+  public Object getMediaById(final long id, final Continuation<? super VaultMedia> $completion) {
+    final String _sql = "SELECT * FROM vault_media WHERE id = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, id);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<VaultMedia>() {
+      @Override
+      @Nullable
+      public VaultMedia call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfOriginalPath = CursorUtil.getColumnIndexOrThrow(_cursor, "originalPath");
+          final int _cursorIndexOfVaultPath = CursorUtil.getColumnIndexOrThrow(_cursor, "vaultPath");
+          final int _cursorIndexOfMediaType = CursorUtil.getColumnIndexOrThrow(_cursor, "mediaType");
+          final int _cursorIndexOfFileName = CursorUtil.getColumnIndexOrThrow(_cursor, "fileName");
+          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
+          final VaultMedia _result;
+          if (_cursor.moveToFirst()) {
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final String _tmpOriginalPath;
+            if (_cursor.isNull(_cursorIndexOfOriginalPath)) {
+              _tmpOriginalPath = null;
+            } else {
+              _tmpOriginalPath = _cursor.getString(_cursorIndexOfOriginalPath);
+            }
+            final String _tmpVaultPath;
+            if (_cursor.isNull(_cursorIndexOfVaultPath)) {
+              _tmpVaultPath = null;
+            } else {
+              _tmpVaultPath = _cursor.getString(_cursorIndexOfVaultPath);
+            }
+            final String _tmpMediaType;
+            if (_cursor.isNull(_cursorIndexOfMediaType)) {
+              _tmpMediaType = null;
+            } else {
+              _tmpMediaType = _cursor.getString(_cursorIndexOfMediaType);
+            }
+            final String _tmpFileName;
+            if (_cursor.isNull(_cursorIndexOfFileName)) {
+              _tmpFileName = null;
+            } else {
+              _tmpFileName = _cursor.getString(_cursorIndexOfFileName);
+            }
+            final long _tmpAddedAt;
+            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            _result = new VaultMedia(_tmpId,_tmpOriginalPath,_tmpVaultPath,_tmpMediaType,_tmpFileName,_tmpAddedAt);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
   }
 
   @NonNull

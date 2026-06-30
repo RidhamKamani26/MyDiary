@@ -1,5 +1,6 @@
 package com.mydiary.app;
 
+import com.mydiary.app.activities.ActivityImage_GeneratedInjector;
 import com.mydiary.app.activities.AddNoteActivity_GeneratedInjector;
 import com.mydiary.app.activities.CalendarActivity_GeneratedInjector;
 import com.mydiary.app.activities.MainActivity_GeneratedInjector;
@@ -184,7 +185,8 @@ public final class MyDiaryApp_HiltComponents {
       }
   )
   @ActivityScoped
-  public abstract static class ActivityC implements AddNoteActivity_GeneratedInjector,
+  public abstract static class ActivityC implements ActivityImage_GeneratedInjector,
+      AddNoteActivity_GeneratedInjector,
       CalendarActivity_GeneratedInjector,
       MainActivity_GeneratedInjector,
       NoteDetailActivity_GeneratedInjector,

@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
+import com.mydiary.app.activities.ActivityImage;
 import com.mydiary.app.activities.AddNoteActivity;
 import com.mydiary.app.activities.CalendarActivity;
 import com.mydiary.app.activities.MainActivity;
@@ -366,6 +367,10 @@ public final class DaggerMyDiaryApp_HiltComponents_SingletonC {
       this.activityRetainedCImpl = activityRetainedCImpl;
 
 
+    }
+
+    @Override
+    public void injectActivityImage(ActivityImage activityImage) {
     }
 
     @Override

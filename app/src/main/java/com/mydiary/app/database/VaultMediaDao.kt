@@ -13,6 +13,9 @@ interface VaultMediaDao {
     @Query("SELECT * FROM vault_media ORDER BY addedAt DESC")
     fun getAllMedia(): LiveData<List<VaultMedia>>
 
+    @Query("SELECT * FROM vault_media WHERE id = :id LIMIT 1")
+    suspend fun getMediaById(id: Long): VaultMedia?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMedia(media: VaultMedia): Long
 

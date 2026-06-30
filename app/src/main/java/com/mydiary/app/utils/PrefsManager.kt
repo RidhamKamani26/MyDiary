@@ -1,35 +1,31 @@
 package com.mydiary.app.utils
 
 import android.content.Context
+import android.content.SharedPreferences
+import android.util.Log
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import java.io.File
 
 class PrefsManager private constructor(context: Context) {
 
-    private val masterKey = MasterKey.Builder(context)
-        .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-        .build()
-
-    private val prefs = EncryptedSharedPreferences.create(
-        context,
-        "diary_secure_prefs",
-        masterKey,
-        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-    )
+    private val prefs: SharedPreferences = createSecurePrefs(context)
 
     companion object {
-        private const val KEY_ONBOARDING_DONE = "onboarding_done"
-        private const val KEY_PRIVACY_ACCEPTED = "privacy_accepted"
-        private const val KEY_VAULT_PIN = "vault_pin"
-        private const val KEY_APP_PIN = "app_pin"
-        private const val KEY_APP_PIN_ENABLED = "app_pin_enabled"
-        private const val KEY_SECURITY_QUESTION = "security_question"
-        private const val KEY_SECURITY_ANSWER = "security_answer"
-        private const val KEY_DIARY_REASONS = "diary_reasons"
-        private const val KEY_DIARY_FREQUENCY = "diary_frequency"
-        private const val KEY_USER_GENDER = "user_gender"
-        private const val KEY_CURRENT_THEME = "current_theme"
+        private const val TAG       = "PrefsManager"
+        private const val PREFS_NAME = "diary_secure_prefs"
+
+        private const val KEY_ONBOARDING_DONE        = "onboarding_done"
+        private const val KEY_PRIVACY_ACCEPTED        = "privacy_accepted"
+        private const val KEY_VAULT_PIN               = "vault_pin"
+        private const val KEY_APP_PIN                 = "app_pin"
+        private const val KEY_APP_PIN_ENABLED         = "app_pin_enabled"
+        private const val KEY_SECURITY_QUESTION       = "security_question"
+        private const val KEY_SECURITY_ANSWER         = "security_answer"
+        private const val KEY_DIARY_REASONS           = "diary_reasons"
+        private const val KEY_DIARY_FREQUENCY         = "diary_frequency"
+        private const val KEY_USER_GENDER             = "user_gender"
+        private const val KEY_CURRENT_THEME           = "current_theme"
         private const val KEY_STORAGE_PERMISSION_SHOWN = "storage_permission_shown"
 
         @Volatile
@@ -37,7 +33,60 @@ class PrefsManager private constructor(context: Context) {
 
         fun getInstance(context: Context): PrefsManager {
             return INSTANCE ?: synchronized(this) {
-                PrefsManager(context.applicationContext).also { INSTANCE = it }
+                INSTANCE ?: PrefsManager(context.applicationContext).also { INSTANCE = it }
+            }
+        }
+
+        /**
+         * Creates EncryptedSharedPreferences. If the existing encrypted file
+         * can't be decrypted (corrupted keystore key, AEADBadTagException,
+         * keystore wiped on factory reset / app data clear, etc.), the file
+         * is deleted and a brand-new encrypted store is created instead of
+         * crashing the app.
+         */
+        private fun createSecurePrefs(context: Context): SharedPreferences {
+            return try {
+                buildEncryptedPrefs(context)
+            } catch (e: Exception) {
+                Log.e(TAG, "EncryptedSharedPreferences corrupted, resetting. Cause: ${e.message}", e)
+                deleteCorruptedPrefsFile(context)
+                // Try again with a clean slate
+                try {
+                    buildEncryptedPrefs(context)
+                } catch (e2: Exception) {
+                    // Absolute last resort: fall back to plain (unencrypted) prefs
+                    // so the app never crashes on startup again.
+                    Log.e(TAG, "Failed to rebuild encrypted prefs, falling back to plain prefs", e2)
+                    context.getSharedPreferences("${PREFS_NAME}_fallback", Context.MODE_PRIVATE)
+                }
+            }
+        }
+
+        private fun buildEncryptedPrefs(context: Context): SharedPreferences {
+            val masterKey = MasterKey.Builder(context)
+                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                .build()
+
+            return EncryptedSharedPreferences.create(
+                context,
+                PREFS_NAME,
+                masterKey,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+        }
+
+        /** Deletes the corrupted prefs XML file so a fresh one can be created. */
+        private fun deleteCorruptedPrefsFile(context: Context) {
+            try {
+                val prefsDir = File(context.applicationInfo.dataDir, "shared_prefs")
+                val prefsFile = File(prefsDir, "$PREFS_NAME.xml")
+                if (prefsFile.exists()) {
+                    val deleted = prefsFile.delete()
+                    Log.w(TAG, "Deleted corrupted prefs file: $deleted")
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to delete corrupted prefs file", e)
             }
         }
     }

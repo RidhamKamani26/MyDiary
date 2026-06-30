@@ -189,11 +189,14 @@ id ibPrevMonth
 id ibSave
 id ibSticker
 id ibText
+id imgcardview
 id ivBgPreview
 id ivDetailBg
 id ivDetailImage
 id ivDiaryIllustration
 id ivFontSelected
+id ivFullscreenImage
+id ivGalleryImage
 id ivHeaderBanner
 id ivHeaderBg
 id ivIllustration
@@ -242,6 +245,7 @@ id rbOther
 id rvBackgrounds
 id rvCalendarNotes
 id rvFonts
+id rvImages
 id rvMedia
 id rvMoods
 id rvNotes
@@ -267,6 +271,7 @@ id tvDetailTitle
 id tvFontChip
 id tvFontName
 id tvFontPreview
+id tvImageCounter
 id tvInstruction
 id tvMediaName
 id tvMonth
@@ -285,9 +290,12 @@ id tvYear
 id vDayBg
 id vNoteDot
 id viewPager
+id viewPagerImages
 layout activity_add_note
 layout activity_calendar
 layout activity_forgot_password
+layout activity_image
+layout activity_image_viewer
 layout activity_main
 layout activity_note_detail
 layout activity_onboarding
@@ -304,6 +312,8 @@ layout activity_vault_settings
 layout item_background
 layout item_calendar_day
 layout item_font
+layout item_fullscreen_image
+layout item_gallery_image
 layout item_mood
 layout item_note
 layout item_theme

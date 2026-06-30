@@ -11,6 +11,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
@@ -59,6 +60,9 @@ public final class ActivityAddNoteBinding implements ViewBinding {
 
   @NonNull
   public final ImageView ibText;
+
+  @NonNull
+  public final CardView imgcardview;
 
   @NonNull
   public final ImageView ivNoteBg;
@@ -110,7 +114,7 @@ public final class ActivityAddNoteBinding implements ViewBinding {
       @NonNull ImageView ibBgConfirm, @NonNull ImageView ibClose, @NonNull ImageView ibDeleteImage,
       @NonNull ImageView ibFontConfirm, @NonNull ImageView ibImage, @NonNull ImageView ibMood,
       @NonNull ImageView ibSave, @NonNull ImageView ibSticker, @NonNull ImageView ibText,
-      @NonNull ImageView ivNoteBg, @NonNull ImageView ivNoteImage,
+      @NonNull CardView imgcardview, @NonNull ImageView ivNoteBg, @NonNull ImageView ivNoteImage,
       @NonNull LinearLayout layoutBackground, @NonNull LinearLayout layoutFont,
       @NonNull LinearLayout layoutMood, @NonNull ScrollView noteContainer,
       @NonNull RecyclerView rvBackgrounds, @NonNull RecyclerView rvFonts,
@@ -130,6 +134,7 @@ public final class ActivityAddNoteBinding implements ViewBinding {
     this.ibSave = ibSave;
     this.ibSticker = ibSticker;
     this.ibText = ibText;
+    this.imgcardview = imgcardview;
     this.ivNoteBg = ivNoteBg;
     this.ivNoteImage = ivNoteImage;
     this.layoutBackground = layoutBackground;
@@ -246,6 +251,12 @@ public final class ActivityAddNoteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.imgcardview;
+      CardView imgcardview = ViewBindings.findChildViewById(rootView, id);
+      if (imgcardview == null) {
+        break missingId;
+      }
+
       id = R.id.ivNoteBg;
       ImageView ivNoteBg = ViewBindings.findChildViewById(rootView, id);
       if (ivNoteBg == null) {
@@ -338,9 +349,9 @@ public final class ActivityAddNoteBinding implements ViewBinding {
 
       return new ActivityAddNoteBinding((CoordinatorLayout) rootView, etDescription, etTitle,
           ibBackground, ibBgConfirm, ibClose, ibDeleteImage, ibFontConfirm, ibImage, ibMood, ibSave,
-          ibSticker, ibText, ivNoteBg, ivNoteImage, layoutBackground, layoutFont, layoutMood,
-          noteContainer, rvBackgrounds, rvFonts, rvMoods, tabAbstract, tabColor, tabLine, tabPlant,
-          tvDate, tvMoodIndicator);
+          ibSticker, ibText, imgcardview, ivNoteBg, ivNoteImage, layoutBackground, layoutFont,
+          layoutMood, noteContainer, rvBackgrounds, rvFonts, rvMoods, tabAbstract, tabColor,
+          tabLine, tabPlant, tvDate, tvMoodIndicator);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -73,9 +73,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, CalendarActivity::class.java))
         }
         findViewById<View>(R.id.navImages).setOnClickListener {
-            startActivity(Intent(this, VaultMediaActivity::class.java).apply {
-                putExtra("media_type", "image")
-            })
+            startActivity(Intent(this, ActivityImage::class.java))
         }
         findViewById<View>(R.id.navSettings).setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))

@@ -3664,6 +3664,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imgcardview
 id immediateStop
 id included
 id indeterminate
@@ -3678,6 +3679,8 @@ id ivDetailBg
 id ivDetailImage
 id ivDiaryIllustration
 id ivFontSelected
+id ivFullscreenImage
+id ivGalleryImage
 id ivHeaderBanner
 id ivHeaderBg
 id ivIllustration
@@ -3874,6 +3877,7 @@ id rtl
 id rvBackgrounds
 id rvCalendarNotes
 id rvFonts
+id rvImages
 id rvMedia
 id rvMoods
 id rvNotes
@@ -4016,6 +4020,7 @@ id tvDetailTitle
 id tvFontChip
 id tvFontName
 id tvFontPreview
+id tvImageCounter
 id tvInstruction
 id tvMediaName
 id tvMonth
@@ -4041,6 +4046,7 @@ id vNoteDot
 id vertical
 id vertical_only
 id viewPager
+id viewPagerImages
 id view_offset_helper
 id view_transition
 id view_tree_lifecycle_owner
@@ -4179,6 +4185,8 @@ layout abc_tooltip
 layout activity_add_note
 layout activity_calendar
 layout activity_forgot_password
+layout activity_image
+layout activity_image_viewer
 layout activity_main
 layout activity_note_detail
 layout activity_onboarding
@@ -4216,6 +4224,8 @@ layout ime_secondary_split_test_activity
 layout item_background
 layout item_calendar_day
 layout item_font
+layout item_fullscreen_image
+layout item_gallery_image
 layout item_mood
 layout item_note
 layout item_theme

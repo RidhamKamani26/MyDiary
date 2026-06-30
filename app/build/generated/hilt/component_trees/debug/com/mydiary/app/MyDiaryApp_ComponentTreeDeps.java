@@ -18,6 +18,7 @@ import dagger.hilt.processor.internal.definecomponent.codegen._dagger_hilt_andro
 import dagger.hilt.processor.internal.definecomponent.codegen._dagger_hilt_android_internal_builders_ViewWithFragmentComponentBuilder;
 import dagger.hilt.processor.internal.definecomponent.codegen._dagger_hilt_components_SingletonComponent;
 import hilt_aggregated_deps._com_mydiary_app_MyDiaryApp_GeneratedInjector;
+import hilt_aggregated_deps._com_mydiary_app_activities_ActivityImage_GeneratedInjector;
 import hilt_aggregated_deps._com_mydiary_app_activities_AddNoteActivity_GeneratedInjector;
 import hilt_aggregated_deps._com_mydiary_app_activities_CalendarActivity_GeneratedInjector;
 import hilt_aggregated_deps._com_mydiary_app_activities_MainActivity_GeneratedInjector;
@@ -67,6 +68,7 @@ import hilt_aggregated_deps._dagger_hilt_android_internal_modules_HiltWrapper_Ac
     },
     aggregatedDeps = {
         _com_mydiary_app_MyDiaryApp_GeneratedInjector.class,
+        _com_mydiary_app_activities_ActivityImage_GeneratedInjector.class,
         _com_mydiary_app_activities_AddNoteActivity_GeneratedInjector.class,
         _com_mydiary_app_activities_CalendarActivity_GeneratedInjector.class,
         _com_mydiary_app_activities_MainActivity_GeneratedInjector.class,

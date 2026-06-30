@@ -6,6 +6,12 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.mydiary.app.R
 
+/**
+ * VaultActivity — private folder hub.
+ * This stays COMPLETELY SEPARATE from ActivityImage (the standalone
+ * main-screen images view). Vault images/videos/audios are PIN-protected
+ * and go through VaultMediaActivity as before.
+ */
 class VaultActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -76,6 +76,15 @@
        <!-- <activity
             android:name=".activities.VaultSettingsActivity"
             android:exported="false" />-->
+        <activity
+            android:name=".activities.ActivityImage"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.ImageViewerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyDiary" />
+
 
         <!-- Themes -->
         <activity

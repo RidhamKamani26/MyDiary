@@ -15,6 +15,7 @@ import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -61,6 +62,7 @@ class AddNoteActivity : AppCompatActivity() {
     private lateinit var layoutFont: View           // ← font panel
     private lateinit var scrollContent: ScrollView
     private lateinit var ivNoteBg: ImageView
+    private lateinit var imgCardview: CardView
 
     private lateinit var bgAdapter: BackgroundAdapter
     private lateinit var fontAdapter: FontAdapter
@@ -129,6 +131,7 @@ class AddNoteActivity : AppCompatActivity() {
         etTitle          = findViewById(R.id.etTitle)
         etDescription    = findViewById(R.id.etDescription)
         ivNoteImage      = findViewById(R.id.ivNoteImage)
+        imgCardview      = findViewById(R.id.imgcardview)
         ibDeleteImage    = findViewById(R.id.ibDeleteImage)
         tvDate           = findViewById(R.id.tvDate)
         tvMoodIndicator  = findViewById(R.id.tvMoodIndicator)
@@ -297,6 +300,7 @@ class AddNoteActivity : AppCompatActivity() {
             selectedImageUri = null; existingImagePath = null
             ivNoteImage.setImageDrawable(null)
             ivNoteImage.visibility = View.GONE; ibDeleteImage.visibility = View.GONE
+            imgCardview.visibility = View.GONE
         }
     }
     private fun requestImagePick() {
@@ -310,6 +314,7 @@ class AddNoteActivity : AppCompatActivity() {
     }
     private fun showAttachedImage(path: String) {
         if (path.isBlank()) return
+        imgCardview.visibility = View.VISIBLE
         ivNoteImage.visibility = View.VISIBLE; ibDeleteImage.visibility = View.VISIBLE
         Glide.with(this)
             .load(if (path.startsWith("content://") || path.startsWith("file://")) Uri.parse(path) else path)

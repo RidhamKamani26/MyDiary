@@ -187,7 +187,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
   }
 
   @Override
-  public Object insertNote(final DiaryNote note, final Continuation<? super Long> arg1) {
+  public Object insertNote(final DiaryNote note, final Continuation<? super Long> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -201,11 +201,11 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object deleteNote(final DiaryNote note, final Continuation<? super Unit> arg1) {
+  public Object deleteNote(final DiaryNote note, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -219,11 +219,11 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object updateNote(final DiaryNote note, final Continuation<? super Unit> arg1) {
+  public Object updateNote(final DiaryNote note, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -237,11 +237,11 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object deleteNoteById(final long id, final Continuation<? super Unit> arg1) {
+  public Object deleteNoteById(final long id, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -262,7 +262,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           __preparedStmtOfDeleteNoteById.release(_stmt);
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
@@ -462,7 +462,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
   }
 
   @Override
-  public Object getNoteById(final long id, final Continuation<? super DiaryNote> arg1) {
+  public Object getNoteById(final long id, final Continuation<? super DiaryNote> $completion) {
     final String _sql = "SELECT * FROM diary_notes WHERE id = ? LIMIT 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -555,7 +555,7 @@ public final class DiaryNoteDao_Impl implements DiaryNoteDao {
           _statement.release();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override

@@ -1,5 +1,6 @@
 package com.mydiary.app.adapters
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,8 @@ class VaultMediaAdapter(
     private val onDelete: (VaultMedia) -> Unit
 ) : ListAdapter<VaultMedia, VaultMediaAdapter.MediaViewHolder>(DIFF) {
 
+    var onItemTap: ((media: VaultMedia, position: Int) -> Unit)? = null
+
     companion object {
         val DIFF = object : DiffUtil.ItemCallback<VaultMedia>() {
             override fun areItemsTheSame(a: VaultMedia, b: VaultMedia) = a.id == b.id
@@ -33,18 +36,28 @@ class VaultMediaAdapter(
     }
 
     override fun onBindViewHolder(holder: MediaViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position)
     }
 
     inner class MediaViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        fun bind(media: VaultMedia) {
+        fun bind(media: VaultMedia, position: Int) {
             if (mediaType == "image") {
                 val iv = itemView.findViewById<ImageView>(R.id.ivVaultImage)
-                Glide.with(itemView.context).load(media.vaultPath).centerCrop().into(iv)
+                val path = media.vaultPath
+                Glide.with(itemView.context)
+                    .load(
+                        if (path.startsWith("content://") || path.startsWith("file://"))
+                            Uri.parse(path) else path
+                    )
+                    .centerCrop()
+                    .into(iv)
+
+                itemView.setOnClickListener { onItemTap?.invoke(media, position) }
                 itemView.setOnLongClickListener { onDelete(media); true }
             } else {
                 val tv = itemView.findViewById<TextView>(R.id.tvMediaName)
                 tv?.text = media.fileName
+                itemView.setOnClickListener { onItemTap?.invoke(media, position) }
                 itemView.setOnLongClickListener { onDelete(media); true }
             }
         }
