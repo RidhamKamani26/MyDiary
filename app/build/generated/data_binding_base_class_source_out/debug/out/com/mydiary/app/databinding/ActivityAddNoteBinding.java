@@ -56,9 +56,6 @@ public final class ActivityAddNoteBinding implements ViewBinding {
   public final ImageView ibSave;
 
   @NonNull
-  public final ImageView ibSticker;
-
-  @NonNull
   public final ImageView ibText;
 
   @NonNull
@@ -113,8 +110,8 @@ public final class ActivityAddNoteBinding implements ViewBinding {
       @NonNull EditText etDescription, @NonNull EditText etTitle, @NonNull ImageView ibBackground,
       @NonNull ImageView ibBgConfirm, @NonNull ImageView ibClose, @NonNull ImageView ibDeleteImage,
       @NonNull ImageView ibFontConfirm, @NonNull ImageView ibImage, @NonNull ImageView ibMood,
-      @NonNull ImageView ibSave, @NonNull ImageView ibSticker, @NonNull ImageView ibText,
-      @NonNull CardView imgcardview, @NonNull ImageView ivNoteBg, @NonNull ImageView ivNoteImage,
+      @NonNull ImageView ibSave, @NonNull ImageView ibText, @NonNull CardView imgcardview,
+      @NonNull ImageView ivNoteBg, @NonNull ImageView ivNoteImage,
       @NonNull LinearLayout layoutBackground, @NonNull LinearLayout layoutFont,
       @NonNull LinearLayout layoutMood, @NonNull ScrollView noteContainer,
       @NonNull RecyclerView rvBackgrounds, @NonNull RecyclerView rvFonts,
@@ -132,7 +129,6 @@ public final class ActivityAddNoteBinding implements ViewBinding {
     this.ibImage = ibImage;
     this.ibMood = ibMood;
     this.ibSave = ibSave;
-    this.ibSticker = ibSticker;
     this.ibText = ibText;
     this.imgcardview = imgcardview;
     this.ivNoteBg = ivNoteBg;
@@ -236,12 +232,6 @@ public final class ActivityAddNoteBinding implements ViewBinding {
       id = R.id.ibSave;
       ImageView ibSave = ViewBindings.findChildViewById(rootView, id);
       if (ibSave == null) {
-        break missingId;
-      }
-
-      id = R.id.ibSticker;
-      ImageView ibSticker = ViewBindings.findChildViewById(rootView, id);
-      if (ibSticker == null) {
         break missingId;
       }
 
@@ -349,9 +339,9 @@ public final class ActivityAddNoteBinding implements ViewBinding {
 
       return new ActivityAddNoteBinding((CoordinatorLayout) rootView, etDescription, etTitle,
           ibBackground, ibBgConfirm, ibClose, ibDeleteImage, ibFontConfirm, ibImage, ibMood, ibSave,
-          ibSticker, ibText, imgcardview, ivNoteBg, ivNoteImage, layoutBackground, layoutFont,
-          layoutMood, noteContainer, rvBackgrounds, rvFonts, rvMoods, tabAbstract, tabColor,
-          tabLine, tabPlant, tvDate, tvMoodIndicator);
+          ibText, imgcardview, ivNoteBg, ivNoteImage, layoutBackground, layoutFont, layoutMood,
+          noteContainer, rvBackgrounds, rvFonts, rvMoods, tabAbstract, tabColor, tabLine, tabPlant,
+          tvDate, tvMoodIndicator);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

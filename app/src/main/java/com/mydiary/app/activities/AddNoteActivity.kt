@@ -15,7 +15,6 @@ import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -46,7 +45,7 @@ class AddNoteActivity : AppCompatActivity() {
     private var selectedMood: String? = null
     private var selectedBgType  = "color"
     private var selectedBgValue = "#FFFFFF"
-    private var selectedFontFileName = "default"   // ← font state
+    private var selectedFontFileName = "default"
     private var editNoteId: Long = -1L
     private var selectedDate: Date = Date()
 
@@ -59,37 +58,71 @@ class AddNoteActivity : AppCompatActivity() {
     private lateinit var tvMoodIndicator: TextView
     private lateinit var layoutBackground: View
     private lateinit var layoutMood: View
-    private lateinit var layoutFont: View           // ← font panel
+    private lateinit var layoutFont: View
     private lateinit var scrollContent: ScrollView
     private lateinit var ivNoteBg: ImageView
-    private lateinit var imgCardview: CardView
 
     private lateinit var bgAdapter: BackgroundAdapter
     private lateinit var fontAdapter: FontAdapter
 
-    // ── font list (1 default + 9 from assets) ──
+    // ════════════════════════════════════════════════════════════════
+    //  FONT LIST — 1 default + 10 existing + 22 new = 33 total fonts
+    //  Grouped by style category so the list feels organised & varied
+    // ════════════════════════════════════════════════════════════════
     private val fontList = listOf(
-        FontItem("Default",          "default",                   "Aa — The quick brown fox"),
-        FontItem("Lora",             "Lora-Regular.ttf",          "Aa — Elegant serif story"),
-        FontItem("Poppins",          "Poppins-Regular.ttf",       "Aa — Clean modern style"),
-        FontItem("Poppins Bold",     "Poppins-Bold.ttf",          "Aa — Strong & confident"),
-        FontItem("Poppins Light",    "Poppins-Light.ttf",         "Aa — Soft and minimal"),
-        FontItem("DejaVu Serif",     "DejaVuSerif-Regular.ttf",   "Aa — Classic newspaper"),
-        FontItem("DejaVu Italic",    "DejaVuSerif-Italic.ttf",    "Aa — Flowing italic notes"),
-        FontItem("Monospace",        "DejaVuSansMono-Regular.ttf","Aa — Code & diary log"),
-        FontItem("Liberation Serif", "LiberationSerif-Regular.ttf","Aa — Timeless reading"),
-        FontItem("Caladea",          "Caladea-Regular.ttf",       "Aa — Book-like warmth")
+
+        // ── System default ──
+        FontItem("Default",                "default",                       "Aa — The quick brown fox"),
+
+        // ── CURSIVE / SCRIPT ──
+        FontItem("Cursive",                "FreeSerifItalic.ttf",           "𝒜𝒶 — The quick brown fox"),
+        FontItem("Cursive Bold",           "FreeSerifBoldItalic.ttf",       "𝒜𝒶 — Bold flowing script"),
+        FontItem("Lora Italic",            "Lora-Italic.ttf",               "Aa — Elegant cursive serif"),
+        FontItem("Serif Condensed Italic", "DejaVuSerifCondensed-Italic.ttf","Aa — Slanted condensed"),
+        FontItem("Caladea Italic",         "Caladea-Italic.ttf",            "Aa — Warm flowing italic"),
+        FontItem("Serif Bold Italic",      "DejaVuSerif-BoldItalic.ttf",    "Aa — Strong italic style"),
+        FontItem("Poppins Italic",         "Poppins-Italic.ttf",            "Aa — Modern slanted"),
+        FontItem("Poppins Medium Italic",  "Poppins-MediumItalic.ttf",      "Aa — Neat medium slant"),
+        FontItem("Poppins Bold Italic",    "Poppins-BoldItalic.ttf",        "Aa — Bold italic flair"),
+        FontItem("Arial Italic",           "LiberationSans-Italic.ttf",     "Aa — Clean slanted sans"),
+
+        // ── SERIF ──
+        FontItem("Lora",                   "Lora-Regular.ttf",              "Aa — Elegant serif story"),
+        FontItem("DejaVu Serif",           "DejaVuSerif-Regular.ttf",       "Aa — Classic newspaper"),
+        FontItem("Serif Bold",             "DejaVuSerif-Bold.ttf",          "Aa — Bold classic serif"),
+        FontItem("Serif Condensed",        "DejaVuSerifCondensed.ttf",      "Aa — Compact & readable"),
+        FontItem("Liberation Serif",       "LiberationSerif-Regular.ttf",   "Aa — Timeless reading"),
+        FontItem("Caladea",                "Caladea-Regular.ttf",           "Aa — Book-like warmth"),
+        FontItem("Caladea Bold",           "Caladea-Bold.ttf",              "Aa — Bold book style"),
+
+        // ── SANS-SERIF (clean & modern) ──
+        FontItem("Poppins",                "Poppins-Regular.ttf",           "Aa — Clean modern style"),
+        FontItem("Poppins Medium",         "Poppins-Medium.ttf",            "Aa — Balanced weight"),
+        FontItem("Poppins Bold",           "Poppins-Bold.ttf",              "Aa — Strong & confident"),
+        FontItem("Poppins Light",          "Poppins-Light.ttf",             "Aa — Soft and minimal"),
+        FontItem("Sans Regular",           "DejaVuSans-Regular.ttf",        "Aa — Everyday clean read"),
+        FontItem("Sans Bold",              "DejaVuSans-Bold.ttf",           "Aa — Bold and clear"),
+        FontItem("Sans Oblique",           "DejaVuSans-Oblique.ttf",        "Aa — Relaxed slant"),
+        FontItem("Sans Light",             "DejaVuSans-ExtraLight.ttf",     "Aa — Ultra thin & airy"),
+        FontItem("Arial Style",            "LiberationSans-Regular.ttf",    "Aa — Familiar & friendly"),
+        FontItem("Arial Bold",             "LiberationSans-Bold.ttf",       "Aa — Bold Arial feel"),
+
+        // ── MONOSPACE / TYPEWRITER ──
+        FontItem("Monospace",              "DejaVuSansMono-Regular.ttf",    "Aa — Code & diary log"),
+        FontItem("Typewriter Bold",        "LiberationMono-Bold.ttf",       "Aa — Bold typewriter"),
+        FontItem("Typewriter Italic",      "LiberationMono-Italic.ttf",     "Aa — Slanted typewriter"),
+        FontItem("FreeSans Oblique",       "FreeSans-Oblique.ttf",          "Aa — Casual oblique")
     )
 
     // ── background lists ──
     private val colorBgs    = listOf("#FFFFFF","#E8D5F5","#FFE4E4","#DCEEFF",
-        "#D5F5E3","#FFF3E0","#FDECEA","#F3E5F5","#E3F2FD")
+                                     "#D5F5E3","#FFF3E0","#FDECEA","#F3E5F5","#E3F2FD")
     private val abstractBgs = listOf("abstract_1","abstract_2","abstract_3",
-        "abstract_4","abstract_5","abstract_6","abstract_7")
-    private val lineBgs     = listOf("line_1","line_2","line_3","line_4",
-        "line_5","line_6","line_7")
-    private val plantBgs    = listOf("plant_1","plant_2","plant_3","plant_4",
-        "plant_5","plant_6","plant_7","plant_8")
+                                     "abstract_4","abstract_5","abstract_6","abstract_7")
+    private val lineBgs     = listOf("#F5F5F5","#EDE7F6","#E8EAF6","#E1F5FE",
+                                     "#E0F2F1","#F9FBE7","#FFF3E0","#FBE9E7","#EFEBE9")
+    private val plantBgs    = listOf("#C8E6C9","#A5D6A7","#81C784","#66BB6A",
+                                     "#4CAF50","#43A047","#388E3C","#2E7D32","#1B5E20")
     private val darkBgDrawables = setOf("abstract_4")
 
     // ── launchers ──
@@ -126,12 +159,10 @@ class AddNoteActivity : AppCompatActivity() {
         if (editNoteId != -1L) loadExistingNote() else updateDateLabel()
     }
 
-    // ── bind ──
     private fun bindViews() {
         etTitle          = findViewById(R.id.etTitle)
         etDescription    = findViewById(R.id.etDescription)
         ivNoteImage      = findViewById(R.id.ivNoteImage)
-        imgCardview      = findViewById(R.id.imgcardview)
         ibDeleteImage    = findViewById(R.id.ibDeleteImage)
         tvDate           = findViewById(R.id.tvDate)
         tvMoodIndicator  = findViewById(R.id.tvMoodIndicator)
@@ -152,19 +183,19 @@ class AddNoteActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.ibSave).setOnClickListener  { saveNote() }
     }
 
-    // ── date ──
     private fun setupDateClick() { tvDate.setOnClickListener { showDatePicker() } }
+
     private fun showDatePicker() {
         val cal = Calendar.getInstance().apply { time = selectedDate }
         DatePickerDialog(this, { _, y, m, d ->
             cal.set(y, m, d); selectedDate = cal.time; updateDateLabel()
         }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
     }
+
     private fun updateDateLabel() {
         tvDate.text = SimpleDateFormat("d | MMM, yyyy\nEEEE", Locale.getDefault()).format(selectedDate)
     }
 
-    // ── mood ──
     private fun setupMoodPicker() {
         val moods = listOf("😊","😠","😘","😀","😑","😄","😏","🤓","😍","😬","😌","😒","😐","😮","😆")
         val adapter = MoodAdapter(moods) { mood ->
@@ -185,27 +216,22 @@ class AddNoteActivity : AppCompatActivity() {
             selectedFontFileName = fontItem.fileName
             fontAdapter.updateSelection(selectedFontFileName)
             applyFont()
-            // Do NOT close panel — let user see preview, they close with tick
         }
-
         layoutFont.findViewById<RecyclerView>(R.id.rvFonts).apply {
             layoutManager = LinearLayoutManager(this@AddNoteActivity)
             adapter        = fontAdapter
         }
-
-        // Tick confirm button
         layoutFont.findViewById<ImageView>(R.id.ibFontConfirm).setOnClickListener {
             applyFont()
             layoutFont.visibility = View.GONE
         }
     }
 
-    /** Apply selected font to title + description */
     private fun applyFont() {
         FontUtils.applyFont(this, selectedFontFileName, etTitle, etDescription)
     }
 
-    // ── background ──
+    // ── BACKGROUND ──
     private fun setupBackgroundPicker() {
         bgAdapter = BackgroundAdapter(colorBgs, "color") { bgType, bgValue ->
             selectedBgType  = bgType
@@ -282,7 +308,6 @@ class AddNoteActivity : AppCompatActivity() {
         } catch (e: Exception) { true }
     }
 
-    // ── toggle panels (only one open at a time) ──
     private fun togglePanel(target: View) {
         val panels = listOf(layoutMood, layoutBackground, layoutFont)
         if (target.visibility == View.VISIBLE) {
@@ -294,34 +319,33 @@ class AddNoteActivity : AppCompatActivity() {
         }
     }
 
-    // ── attached image ──
     private fun setupImageDelete() {
         ibDeleteImage.setOnClickListener {
             selectedImageUri = null; existingImagePath = null
             ivNoteImage.setImageDrawable(null)
             ivNoteImage.visibility = View.GONE; ibDeleteImage.visibility = View.GONE
-            imgCardview.visibility = View.GONE
         }
     }
+
     private fun requestImagePick() {
         val perm = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
             Manifest.permission.READ_MEDIA_IMAGES else Manifest.permission.READ_EXTERNAL_STORAGE
         if (ContextCompat.checkSelfPermission(this, perm) == PackageManager.PERMISSION_GRANTED)
             pickImage() else storagePermLauncher.launch(perm)
     }
+
     private fun pickImage() {
         pickImageLauncher.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
     }
+
     private fun showAttachedImage(path: String) {
         if (path.isBlank()) return
-        imgCardview.visibility = View.VISIBLE
         ivNoteImage.visibility = View.VISIBLE; ibDeleteImage.visibility = View.VISIBLE
         Glide.with(this)
             .load(if (path.startsWith("content://") || path.startsWith("file://")) Uri.parse(path) else path)
             .centerCrop().into(ivNoteImage)
     }
 
-    // ── load existing note ──
     private fun loadExistingNote() {
         lifecycleScope.launch {
             val note = viewModel.getNoteById(editNoteId)
@@ -336,7 +360,8 @@ class AddNoteActivity : AppCompatActivity() {
 
                 if (!note.moodEmoji.isNullOrEmpty()) {
                     selectedMood = note.moodEmoji
-                    tvMoodIndicator.text = note.moodEmoji; tvMoodIndicator.visibility = View.VISIBLE
+                    tvMoodIndicator.text = note.moodEmoji
+                    tvMoodIndicator.visibility = View.VISIBLE
                 }
 
                 selectedBgType = note.backgroundType; selectedBgValue = note.backgroundValue
@@ -349,13 +374,13 @@ class AddNoteActivity : AppCompatActivity() {
                 }
                 bgAdapter.preselectValue(selectedBgValue)
 
-                // ── restore font ──
                 selectedFontFileName = note.fontFileName
                 applyFont()
                 fontAdapter.updateSelection(selectedFontFileName)
 
                 if (!note.imagePath.isNullOrEmpty()) {
-                    existingImagePath = note.imagePath; showAttachedImage(note.imagePath)
+                    existingImagePath = note.imagePath
+                    showAttachedImage(note.imagePath)
                 }
             }
         }
@@ -365,7 +390,6 @@ class AddNoteActivity : AppCompatActivity() {
         highlightTab(layoutBackground.findViewById(tabId))
     }
 
-    // ── save ──
     private fun saveNote() {
         val title = etTitle.text.toString().trim()
         val desc  = etDescription.text.toString().trim()
@@ -381,7 +405,7 @@ class AddNoteActivity : AppCompatActivity() {
             moodEmoji       = selectedMood,
             backgroundType  = selectedBgType,
             backgroundValue = selectedBgValue,
-            fontFileName    = selectedFontFileName,   // ← saved to DB
+            fontFileName    = selectedFontFileName,
             date            = selectedDate
         )
         if (editNoteId != -1L) viewModel.updateNote(note) else viewModel.insertNote(note)

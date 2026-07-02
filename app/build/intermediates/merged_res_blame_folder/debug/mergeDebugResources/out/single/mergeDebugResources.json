@@ -16,6 +16,10 @@
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\plant_3.png"
     },
     {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\drawable_bg_style_btn_normal.xml.flat",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\bg_style_btn_normal.xml"
+    },
+    {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\layout_item_calendar_day.xml.flat",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_calendar_day.xml"
     },
@@ -124,20 +128,20 @@
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\abstract_6.png"
     },
     {
-        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\layout_activity_password_settings.xml.flat",
-        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_password_settings.xml"
-    },
-    {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\drawable_line_7.png.flat",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\line_7.png"
     },
     {
-        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\layout_page_onboarding_storage.xml.flat",
-        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_storage.xml"
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\layout_activity_password_settings.xml.flat",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_password_settings.xml"
     },
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\drawable_ic_calendar.xml.flat",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\ic_calendar.xml"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\layout_page_onboarding_storage.xml.flat",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_storage.xml"
     },
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\drawable_bg_bottom_nav.xml.flat",
@@ -376,6 +380,10 @@
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\bg_note_image.xml"
     },
     {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\layout_layout_style_panel.xml.flat",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\layout_style_panel.xml"
+    },
+    {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\layout_page_onboarding_privacy.xml.flat",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\page_onboarding_privacy.xml"
     },
@@ -504,6 +512,10 @@
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\activity_set_password.xml"
     },
     {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\layout_item_note_block.xml.flat",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\layout\\item_note_block.xml"
+    },
+    {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\drawable_ic_star.xml.flat",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\ic_star.xml"
     },
@@ -518,6 +530,10 @@
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\drawable_ic_style_icon.xml.flat",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\ic_style_icon.xml"
     },
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\drawable_ic_chevron_right.xml.flat",
@@ -570,5 +586,9 @@
     {
         "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\drawable_bg_onboarding_header.png.flat",
         "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\bg_onboarding_header.png"
+    },
+    {
+        "merged": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-debug-60:\\drawable_bg_style_btn_active.xml.flat",
+        "source": "C:\\Users\\VICTUS\\.gradle\\daemon\\8.9\\com.mydiary.app-main-62:\\drawable\\bg_style_btn_active.xml"
     }
 ]

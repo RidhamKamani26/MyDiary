@@ -71,6 +71,8 @@ drawable bg_pin_key
 drawable bg_pin_key_backspace
 drawable bg_pin_key_normal
 drawable bg_questions_card
+drawable bg_style_btn_active
+drawable bg_style_btn_normal
 drawable bg_tab_selected
 drawable bg_tab_unselected
 drawable bg_theme_night
@@ -114,6 +116,7 @@ drawable ic_settings
 drawable ic_share
 drawable ic_star
 drawable ic_storage_illustration
+drawable ic_style_icon
 drawable ic_text_format
 drawable ic_video
 drawable line_1
@@ -189,7 +192,6 @@ id ibMore
 id ibNextMonth
 id ibPrevMonth
 id ibSave
-id ibSticker
 id ibText
 id imgcardview
 id ivBgPreview

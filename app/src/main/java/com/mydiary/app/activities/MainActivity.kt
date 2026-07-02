@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         prefs = PrefsManager.getInstance(this)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
 
         SetupTheme()
